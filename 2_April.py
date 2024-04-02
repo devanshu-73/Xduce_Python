@@ -1,28 +1,18 @@
 # =====================================================
 # Odd Even task
-# a = int(input("Enter Number :"))
-
-
-# if a%2 == 0:
-#     print("It's Even...")
-# else:
-#     print("It's Odd...")
-
-#using function
-    
+ 
 def oddeven(a):
     if a%2 == 0:
         print("It's Even...")
     else:
         print("It's Odd...")
 
-
 # =====================================================
 # Prime Number
         
 def prime(n):
     flag = True
-    if n == 1 and n == 0:
+    if n == 1 or n == 0:
         print("Not a Prime")
     if n > 2:
         for i in range(2,n):
@@ -33,8 +23,6 @@ def prime(n):
     else:
         print("no is not prime")
         
-
-
 # =====================================================
 
 # Palindrome
@@ -57,8 +45,7 @@ def palindrome(str1):
         reversed = i + reversed
     # print(reversed)
     return str1 == reversed
-
-        
+    
 # =====================================================
         
 # check if a number is positive, negative, or zero
@@ -72,7 +59,6 @@ def check_number(n):
         print("Zero")
      
 # =====================================================
-
 
 
 def main():

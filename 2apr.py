@@ -40,11 +40,11 @@ def prime(n):
 # Palindrome
         
 # Solution : 1
-# def palindrome(str1):
-#     if str(str1) == str(str1)[::-1] :
-#         print("Palindrome...")
-#     else:
-#         print("Not a Palindrome..")
+def palindrome(str1):
+    if str(str1) == str(str1)[::-1] :
+        print("Palindrome...")
+    else:
+        print("Not a Palindrome..")
 
 
 

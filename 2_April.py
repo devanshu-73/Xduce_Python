@@ -35,17 +35,30 @@ def prime(n):
 #         print("Not a Palindrome..")
 
 # Solution 2
-def palindrome(str1): 
-    reversed = ''
-
-    if len(str1) <= 0:
-        return False
-
-    for i in str1:
-        reversed = i + reversed
-    # print(reversed)
-    return str1 == reversed
+# def palindrome(str1): 
+#     reversed = ''
     
+
+#     if len(str1) <= 0:
+#         return False
+#     breakpoint()
+#     for i in str1:
+#         reversed = i + reversed
+#     # print(reversed)
+#     return str1 == reversed
+        
+# Solution 3
+def palindrome(s):
+    i, j = 0, len(s) - 1
+
+    while i < j:
+        if s[i] != s[j]:
+            return False # Not a Palindrome
+        i = i + 1
+        j = j - 1
+    
+    return True # It's a Palindrome
+
 # =====================================================
         
 # check if a number is positive, negative, or zero

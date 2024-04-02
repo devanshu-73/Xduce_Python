@@ -27,6 +27,7 @@ def prime(n):
 # Write a program to check no is palindrome or not
             
 # Solution : 1
+        
 # def palindrome(str1):
 #     if str(str1) == str(str1)[::-1] :
 #         print("Palindrome...")
@@ -34,10 +35,10 @@ def prime(n):
 #         print("Not a Palindrome..")
 
 # Solution 2
+        
 # def palindrome(str1): 
 #     reversed = ''
     
-
 #     if len(str1) <= 0:
 #         return False
 #     for i in str1:
@@ -46,8 +47,9 @@ def prime(n):
 #     return str1 == reversed
         
 # Solution 3
+        
 def palindrome(s):
-    i, j = 0, len(s) - 1
+    i, j = 0, len(s) - 1 # Assigning Initial Values to i,j
 
     while i < j:
         if s[i] != s[j]:

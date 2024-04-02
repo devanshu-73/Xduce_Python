@@ -1,5 +1,5 @@
 # =====================================================
-# Odd Even task
+# Write a program to check no is odd or even 
  
 def oddeven(a):
     if a%2 == 0:
@@ -8,8 +8,8 @@ def oddeven(a):
         print("It's Odd...")
 
 # =====================================================
-# Prime Number
-        
+# Write a program to check prime no
+               
 def prime(n):
     flag = True
     if n == 1 or n == 0:
@@ -24,9 +24,8 @@ def prime(n):
         print("no is not prime")
         
 # =====================================================
-
-# Palindrome
-        
+# Write a program to check no is palindrome or not
+            
 # Solution : 1
 # def palindrome(str1):
 #     if str(str1) == str(str1)[::-1] :
@@ -59,8 +58,8 @@ def palindrome(s):
     return True # It's a Palindrome
 
 # =====================================================
-        
-# check if a number is positive, negative, or zero
+
+# Write a program  statement to check if a number is positive, negative, or zero 
 
 def check_number(n):
     if n > 0:

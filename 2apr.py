@@ -82,7 +82,7 @@ def main():
     # ==============================================
     # prime(num)
     # ==============================================
-    str1 = input("Enter String or Number  : ")
+    str1 = input("Enter Input : ")
     if palindrome(str1):
         print("Palindrome")
     else:

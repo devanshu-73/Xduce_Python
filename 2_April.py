@@ -41,7 +41,6 @@ def prime(n):
 
 #     if len(str1) <= 0:
 #         return False
-#     breakpoint()
 #     for i in str1:
 #         reversed = i + reversed
 #     # print(reversed)

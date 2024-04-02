@@ -1,8 +1,8 @@
 # =====================================================
 # Write a program to check no is odd or even 
- 
-def oddeven(a):
-    if a%2 == 0:
+
+def oddeven(a): # Odd_Even Function Definition
+    if a%2 == 0: # If reminder is 0 then its Even else Odd
         print("It's Even...")
     else:
         print("It's Odd...")
@@ -10,10 +10,12 @@ def oddeven(a):
 # =====================================================
 # Write a program to check prime no
                
-def prime(n):
-    flag = True
-    if n == 1 or n == 0:
+def prime(n): # # Prime_Number Function Definition
+    if n<=1: # 0,1 and Negatives are not a Prime Number 
         print("Not a Prime")
+    
+    flag = True
+    
     if n > 2:
         for i in range(2,n):
             if n%i == 0:
@@ -28,23 +30,24 @@ def prime(n):
             
 # Solution : 1
         
-# def palindrome(str1):
-#     if str(str1) == str(str1)[::-1] :
-#         print("Palindrome...")
-#     else:
-#         print("Not a Palindrome..")
+def palindrome(str1):
+    if str(str1) == str(str1)[::-1] :
+        print("Palindrome...")
+    else:
+        print("Not a Palindrome..")
 
 # Solution 2
         
-# def palindrome(str1): 
-#     reversed = ''
+def palindrome(str1): 
+    reversed = '' # Variable initialization
     
-#     if len(str1) <= 0:
-#         return False
-#     for i in str1:
-#         reversed = i + reversed
-#     # print(reversed)
-#     return str1 == reversed
+    if len(str1) <= 0: # Finding That string is not empty
+        return False
+    
+    for i in str1:
+        reversed = i + reversed
+    # print(reversed)
+    return str1 == reversed
         
 # Solution 3
         
@@ -75,11 +78,13 @@ def check_number(n):
 
 
 def main():
-    # num = int(input("enter your number : "))
+    num = int(input("enter your number : "))
     # ==============================================
-    # oddeven(num)
+    oddeven(num) # Odd_Even Function Call
     # ==============================================
-    # prime(num)
+    prime(num) # Prime_Number Function Call
+    # ==============================================
+    check_number(num) # Check_Number Function Call
     # ==============================================
     str1 = input("Enter Input : ")
     if palindrome(str1):
@@ -87,6 +92,5 @@ def main():
     else:
         print("Not Palindrome")
     # ==============================================
-    # check_number(num)
 if __name__ == "__main__":
     main()

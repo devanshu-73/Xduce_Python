@@ -40,14 +40,25 @@ def prime(n):
 # Palindrome
         
 # Solution : 1
-def palindrome(str1):
-    if str(str1) == str(str1)[::-1] :
-        print("Palindrome...")
-    else:
-        print("Not a Palindrome..")
+# def palindrome(str1):
+#     if str(str1) == str(str1)[::-1] :
+#         print("Palindrome...")
+#     else:
+#         print("Not a Palindrome..")
 
+# Solution 2
+def palindrome(str1): 
+    reversed = ''
 
+    if len(str1) <= 0:
+        return False
 
+    for i in str1:
+        reversed = i + reversed
+    # print(reversed)
+    return str1 == reversed
+
+        
 # =====================================================
         
 # check if a number is positive, negative, or zero
@@ -65,15 +76,18 @@ def check_number(n):
 
 
 def main():
-    num = int(input("enter your number : "))
+    # num = int(input("enter your number : "))
     # ==============================================
     # oddeven(num)
     # ==============================================
     # prime(num)
     # ==============================================
-    # str1 = input("Enter Something..")
-    # palindrome(str1)
+    str1 = input("Enter String or Number  : ")
+    if palindrome(str1):
+        print("Palindrome")
+    else:
+        print("Not Palindrome")
     # ==============================================
-    check_number(num)
+    # check_number(num)
 if __name__ == "__main__":
     main()

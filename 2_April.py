@@ -46,7 +46,7 @@ def palindrome(str1):
     
     for i in str1:
         reversed = i + reversed
-    # print(reversed)
+
     return str1 == reversed
         
 # Solution 3
@@ -92,5 +92,6 @@ def main():
     else:
         print("Not Palindrome")
     # ==============================================
+    
 if __name__ == "__main__":
     main()

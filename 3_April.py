@@ -1,4 +1,6 @@
+# ==================================================================================================================
 # Topic 1 : Args & Kwargs
+# ==================================================================================================================
  
 # Example Of *Args = Arguments
 '''
@@ -45,20 +47,51 @@ def args_kwargs_fn(*args, **kwargs):
 args_kwargs_fn(11, 22, 33, Name='Dev_anshu', Age=24)
 
 
-
+# ==================================================================================================================
 # Topic 2 : Decorators
+# ==================================================================================================================
 
-def decorator_fn(fn,*args,**kwargs):
-    def wrapper():
-        print("Before : Doing Something")
-        fn()
-        print("After  : Doing Something")
+# Sample Example 
+
+def decorator_fn(fn):
+    def wrapper(*args,**kwargs):
+        print("Before")   # If u want do something before Main function  
+        fn()              # Main Function Which going to be decorate
+        print("After")    # or U can do something after Main Function
     return wrapper
 
 @decorator_fn
 def going_to_decorate():
-    print('Hello Everyone....')   
+    print('Hello Everyone....')  
 
 going_to_decorate()
 
+# Decorator Example : 1 
 
+def deco_add(func):
+    def wrapper(*args):
+        print("Arguments:", args)
+        result = func(*args)
+        print("Result:", result)
+        return result
+    return wrapper
+
+@deco_add
+def add(a, b):
+    return a + b
+
+result = add(3, 5)
+
+# ==================================================================================================================
+# Topic 3 : Lambda Functions
+# ==================================================================================================================
+
+# Example 1 : Basic Addition With 2 Values
+
+add = lambda x,y : x+y
+add(1,2)
+
+# Example 2 : Addition With Multiple Values
+
+add = lambda *args : sum(args)
+add(1,2,3,4,5,6,7,8,9)

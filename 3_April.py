@@ -36,6 +36,21 @@ kwargs_fn(Name='Devanshu', Age=24, position='Python Trainee')
     we can use args,kwargs together in a function definition 
     to accept both 
     positional and keyword arguments
+    Subject: Logout Details for Today
+
+Hi Shivam Sir,
+
+I trust your day was productive.
+
+Logout Time: [Insert time, e.g., 6:00 PM]
+
+Task Update: Yes, I have completed all the tasks mentioned at login successfully.
+
+Extra Work: Furthermore, I dedicated some time to familiarize myself with the pandas library and the logging library for better debugging and error tracking.
+
+Looking forward to applying these new skills in future tasks.
+
+Best regards,
 '''
 
 def args_kwargs_fn(*args, **kwargs):

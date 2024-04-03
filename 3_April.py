@@ -95,3 +95,11 @@ add(1,2)
 
 add = lambda *args : sum(args)
 add(1,2,3,4,5,6,7,8,9)
+
+# Example 3 : Odd,Even With List
+
+list1 = [1,2,3,4,5,6,7,8,9]
+even = list(filter(lambda x : x % 2 == 0,list1))
+odd = list(filter(lambda x : x % 2 != 0,list1))
+print("Even : ",even)
+print("Odd : ",odd)

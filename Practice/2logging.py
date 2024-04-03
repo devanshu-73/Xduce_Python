@@ -1,6 +1,7 @@
 import logging
 
 logging.basicConfig(level=logging.INFO)
+
 for i in range(1, 6):
     logging.info("Counting Start SuccessFully!....")
     print(i)

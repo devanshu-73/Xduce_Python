@@ -108,6 +108,7 @@ tuple_name[-1] return the last element.
 '''
 
 t1 = (1,2,3,4,5,6)
+
 print(t1[0]) # first Element
 print(t1[-1]) # Last Element
 
@@ -133,25 +134,94 @@ print(tuple1)
 # Dictionary
 
 # =======================================================================================================
-# Q  - 1  : How do you create an empty dictionary in Python?
+# Q - 1 : How do you create an empty dictionary in Python?
 
 empty_dict = {}
 # or 
 empty_dict = dict()
 
 # =======================================================================================================
-# Q  - 2  : Explain the difference between dict.keys(),dict.values(), and dict.items() methods.
-# dict.keys() : we can access all keys of dictionary 
-
+# Q - 2 : Explain the difference between dict.keys(),dict.values(), and dict.items() methods.
 
 d1 = {'name': 'Dev', 'age': 15, 'marks': {'maths': 95, 'physics': 89, 'chemistry': 85}}
+
+# dict.keys() : we can access all keys of dictionary 
+
 for k in d1.keys():
     print(k)
 
-
 # dict.values() : we can access all values of dictionary 
 
-for v in d1.values:
-    print(k)
+for v in d1.values():
+    print(v)
+
+# dict.items() : we can access both keys and values of dictionary 
+
+for k,v in d1.items():
+    print(f'{k}:{v}')
 
 # =======================================================================================================
+
+# Q - 3 : How do you iterate over key-value pairs in a dictionary using loops in Python?
+
+for k,v in d1['marks'].items():
+    print(f'{k}:{v}')
+
+# =======================================================================================================
+
+# Q - 4 : What are dictionary comprehensions? Provide an example
+
+'''
+    Dictionary comprehensions are a concise and expressive way to create dictionaries in Python using a compact syntax. 
+    it returns dictionary
+    variable = {key_expression: value_expression for item in iterable}
+'''
+
+squares = {f'square of {x}': x*x for x in range(1, 6)}
+print(squares)
+
+# =======================================================================================================
+
+# Sets
+
+# =======================================================================================================
+
+# Q - 1 : How do you add elements to a set in Python?
+'''
+    Using Add() Method We Can Add Elements In Set 
+'''
+s1 = {1,2,3,4,5}
+
+s1.add(5)
+print(s1)
+
+# =======================================================================================================
+
+# Q - 2 : Explain the difference between set.add() and set.update() methods.
+
+'''
+   Add() : Using Add() Method We Can Add Elements In Set 
+   Update() : Using Update() Method We Can Add Multiple Elements In Set 
+'''
+s2 = {11,22}
+
+# Adding a single element
+s2.add(66)
+
+# Adding multiple elements
+s2.update([44,55])
+
+print(s2)  
+
+# =======================================================================================================
+
+# Q - 3 : What are set comprehensions? Provide an example.
+
+'''
+    Set comprehensions are a concise and efficient way to create sets in Python using a compact syntax
+    it returns Set
+    variable = {expression for item in iterable}
+'''
+
+squares = {x*x for x in range(1, 6)}
+print(squares)

@@ -1,4 +1,4 @@
-# Todays Test:
+# Todays Test Task:
 # Suppose you are building a system to manage student grades. # Implement a Python program that includes the following functionalities:
 # 1. A function to add a new student with their grades.
 # 2. A function to calculate the average grade of a student.

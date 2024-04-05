@@ -16,14 +16,14 @@ def prime(n): # # Prime_Number Function Definition
     
     flag = True
     
-    if n > 2:
+    if n >= 2:
         for i in range(2,n):
             if n%i == 0:
                 flag = False
     if flag:
-        print("no is prime")
+        print("num is prime")
     else:
-        print("no is not prime")
+        print("not prime")
         
 # =====================================================
 # Write a program to check no is palindrome or not

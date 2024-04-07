@@ -5,7 +5,7 @@
 # 3. A decorator function to ensure that Student is pass or fail in exam
 # 4. A function to retrieve the highest grade among all students.
 # 5. A function to retrieve the average grade of all students.
-# Constraints: - Use dictionaries to store student names as keys and their grades as values.
+# Constraints: - Use dictionaries to store student names as keys and their 3 Subject grades as values.
 
 students = {}
 

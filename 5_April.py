@@ -80,7 +80,7 @@ def main():
     while True:
         print('''
                 ************* Student Management System *************
-                    Choice 1 : Add Student || Positive Grade are Accepted Or Not
+                    Choice 1 : Add Student || Student Pass or Fail Checking(Decorator)
                     Choice 2 : Avg Grade of Single Student
                     Choice 3 : Highest Among All Students
                     Choice 4 : Avg Grade of All Student

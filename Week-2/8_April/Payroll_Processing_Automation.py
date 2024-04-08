@@ -4,12 +4,12 @@ import datetime
 
 # Step 1: Check if current date is past 20th of the month
 today = datetime.datetime.now()
-if today.day <= 20:
+if today.day <= 5:
     print("Payroll processing is scheduled after the 20th of the month.")
     exit()
 
 # Step 2: Check if payroll.txt file is empty
-payroll_folder = "Week-2//8_April//account"
+payroll_folder = "Week-2/8_April/account/"  # Path corrected to include the 'Week-2' and '8_April' folders
 file_name = "payroll.txt"
 
 # Combine the current directory path with the folder name
@@ -27,7 +27,7 @@ if os.path.exists(payroll_file_path) and os.path.getsize(payroll_file_path) == 0
     exit()
 
 # Step 3: File Handling - Copy payroll file to work folder and rename
-work_folder = "work/"
+work_folder = "Week-2/8_April/work/"
 if not os.path.exists(work_folder):
     os.makedirs(work_folder)
 

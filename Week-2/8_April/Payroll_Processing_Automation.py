@@ -9,8 +9,20 @@ if today.day <= 20:
     exit()
 
 # Step 2: Check if payroll.txt file is empty
-payroll_file_path = "account/payroll.txt"
-if os.path.getsize(payroll_file_path) == 0:
+payroll_folder = "Week-2//8_April//account"
+file_name = "payroll.txt"
+
+# Combine the current directory path with the folder name
+folder_path = os.path.join(os.getcwd(), payroll_folder)
+
+# Create the folder if it doesn't exist
+if not os.path.exists(folder_path):
+    os.makedirs(folder_path)
+
+payroll_file_path = os.path.join(folder_path, file_name)
+
+# Check if payroll file exists and is empty
+if os.path.exists(payroll_file_path) and os.path.getsize(payroll_file_path) == 0:
     print("Payroll file is empty. No processing needed.")
     exit()
 
@@ -33,11 +45,11 @@ with open(new_file_path, 'r') as file:
         emp_code, work_days = line.strip().split(',')
         # Assuming base wage is fetched from employee data, calculation of salary happens here
         # For simplicity, let's assume base wage is 10 units per day
-        salary = int(work_days) * 10  
+        salary = int(work_days) * 1000  
         payroll_data.append((emp_code, salary))
 
 # Step 5: Obtain employee data from Excel file and add a salary column
-employee_excel_path = "employee_data.xlsx"
+employee_excel_path = "ActiveEmployeeData.xlsx"
 employee_data = []
 with open(employee_excel_path, 'r') as file:
     for line in file:

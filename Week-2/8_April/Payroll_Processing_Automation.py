@@ -30,31 +30,29 @@ def copy_file(source_path, dest_folder):
 # Function to process payroll and generate Excel file
 def process_payroll(payroll_file_path, employee_data_path):
     # print("==============================",payroll_file_path, employee_data_path)
+
     # Read payroll data and calculate salary
     payroll_data = {}
+ 
     with open(payroll_file_path, 'r') as file:
+        
         for line in file:
-            emp_code, work_days = line.strip().split(',')
 
-            # print("Employee code:", emp_code)
-            # print("Work days:", work_days)
-
+            emp_code, work_days = line.strip().split(',') # print("Employee code:", emp_code,"|| Work days :", work_days)
             salary = int(work_days) * 1000
             payroll_data[emp_code] = salary
 
     # Read employee data and create a workbook
-    wb = load_workbook(filename = 'ActiveEmployeeData.xlsx')
+    wb = load_workbook(employee_data_path)
     sh1 = wb['Sheet1']
-
     rows = sh1.max_row  # inbuilt function
     columns = sh1.max_column # inbuilt function
-    
-    for c in range(1,columns+1):
-        for r in range(1,rows+1):
-            print()
-    print('==============================================','rows :',rows,'columns :',columns)
-    # print("============================================",sh1['G1'].value)
-    pass
+
+    for i, value in enumerate(payroll_data.values(), start=2):
+        cell = sh1.cell(row=i, column=8)
+        cell.value = value
+
+    wb.save(employee_data_path)
 
 # Main function
 def main():
@@ -63,8 +61,7 @@ def main():
         return
 
     payroll_file_path = "account/payroll.txt"
-    employee_data_path = "ActiveEmployeeData.xlsx"
-    shared_folder = "shared/"
+    employee_data_path = "ex_2.xlsx"
 
     if payroll_empty(payroll_file_path):
         print("Payroll file is empty. No processing needed.")
@@ -73,19 +70,6 @@ def main():
     new_file_path = copy_file(payroll_file_path, work_folder)
 
     output_file_path = process_payroll(new_file_path, employee_data_path)
-
-    # Copy output file to shared folder and delete from payroll folder
-    if not os.path.exists(shared_folder):
-        os.makedirs(shared_folder)
-
-    shared_file_path = os.path.join(shared_folder, os.path.basename(output_file_path))
-
-    try:
-        shutil.copy(output_file_path, shared_file_path)
-        os.remove(output_file_path)
-        print(f"Output file copied to {shared_folder} and deleted from payroll folder.")
-    except Exception as e:
-        print(f"Error occurred while copying/deleting file: {e}")
 
 if __name__ == "__main__":
     main()

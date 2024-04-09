@@ -18,7 +18,7 @@ def countdown(n):
         print("==========",n)
         n -= 1
 
-# print(countdown(5)) # Returning Object 
+# print(countdown(5)) # It Returns Object 
 
 # Using the generator
 

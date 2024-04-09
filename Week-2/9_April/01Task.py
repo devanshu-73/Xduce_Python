@@ -18,9 +18,10 @@ def countdown(n):
         print("==========",n)
         n -= 1
 
-# print(countdown(5))
+# print(countdown(5)) # Returning Object 
 
 # Using the generator
+
 # Way 1 :To Print
 num = countdown(5)
 # U can print single elements using next(num)

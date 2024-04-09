@@ -45,8 +45,8 @@ def process_payroll(payroll_file_path, employee_data_path):
     # Read employee data and create a workbook
     wb = load_workbook(employee_data_path)
     sh1 = wb['Sheet1']
-    rows = sh1.max_row  # inbuilt function
-    columns = sh1.max_column # inbuilt function
+    rows = sh1.max_row
+    columns = sh1.max_column 
 
     for i, value in enumerate(payroll_data.values(), start=2):
         cell = sh1.cell(row=i, column=8)

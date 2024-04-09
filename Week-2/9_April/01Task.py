@@ -11,7 +11,7 @@ even_nums =  [num for num in nums if num%2 == 0]
 odd_nums = lambda nums: [num for num in nums if num%2 != 0]
 # print("Odd Numbers :",odd_nums(nums)) 
 
-# 3) Generators  Function :
+# 3) Generators Function :
 def countdown(n):
     while n > 0:
         yield n

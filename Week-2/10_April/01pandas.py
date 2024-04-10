@@ -1,10 +1,10 @@
 # Pandas: 
-#    0) Pandas Installation , Importing into Py file
+#    0) Pandas Installation , Importing into Python file
 #    1) Series [Columns]
 #    2) Data Frames [Combination of Multiple Series]
 #    3) Reading Data from Excel Sheet
 #    3) Reading Data from CSV File [Comma Separate Values]
-#    4) Pandas Inbuilt Fns : head(),tail(),value_counts()..
+#    4) Pandas Inbuilt Fns : count(),head(),tail(),value_counts(),sum(),max(),min(),mean()
 #    4) Pandas attributes : shape,columns
 
 import pandas as pd
@@ -31,6 +31,17 @@ print('DataFrames :\n',df1)
 
 # ===================================================================
 
+"""   
+    If We Have File's Path like below then it gives error,
+    so u have to write 'r' before your path so it consider as a raw string
+    print(r'C:/Users/Devanshu Chauhan/Desktop/Devanshu-python/Week-2/10_April/data.csv')
+
+    or u can do this
+
+    print('C:\\Users\\Devanshu Chauhan\\Desktop\\Devanshu-python\\Week-2\\10_April\\data.csv')
+
+"""
+
 print('***************  Reading Data from Excel Sheet ***************')
 
 excel1 = pd.read_excel('data.xlsx')
@@ -52,6 +63,7 @@ print('***************  Pandas Inbuilt Fn ***************')
 print(csv1.head()) # head() return first n rows , Default value is 5
 print(csv1.tail()) # tail() return last n rows , Default value is 5 
 print(csv1['Gender'].value_counts()) # Returning Specific counts like male=14,female=10
+print(csv1['Name'].count()) # count() return how many entries have that column
 
 # Attributes
 print(csv1.shape) # Returns Tuple (Rows,Columns)

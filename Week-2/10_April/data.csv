@@ -1,21 +1,25 @@
-Name,Age,Location
-John,25,New York
-Alice,30,Los Angeles
-Bob,22,Chicago
-Emma,28,San Francisco
-Michael,35,Boston
-Sophia,27,Miami
-David,40,Dallas
-Olivia,32,Seattle
-James,29,Philadelphia
-Ella,26,Atlanta
-William,33,Houston
-Ava,31,Denver
-Matthew,24,Phoenix
-Mia,29,Detroit
-Andrew,36,Portland
-Isabella,28,San Diego
-Christopher,34,Minneapolis
-Charlotte,30,Orlando
-Daniel,37,Austin
-Grace,23,Nashville
+Name,Age,Location,Gender
+John,25,New York,Male
+Alice,30,Los Angeles,Female
+Bob,22,Chicago,Male
+Emma,28,San Francisco,Female
+Michael,35,Boston,Male
+Sophia,27,Miami,Female
+David,40,Dallas,Male
+Olivia,32,Seattle,Female
+James,29,Philadelphia,Male
+Ella,26,Atlanta,Female
+William,33,Houston,Male
+Ava,31,Denver,Female
+Matthew,24,Phoenix,Male
+Mia,29,Detroit,Female
+Andrew,36,Portland,Male
+Isabella,28,San Diego,Female
+Christopher,34,Minneapolis,Male
+Charlotte,30,Orlando,Female
+Daniel,37,Austin,Male
+Grace,23,Nashville,Female
+Alex,31,Chicago,Male
+Ryan,27,San Francisco,Male
+Tyler,29,Seattle,Male
+Brandon,32,Los Angeles,Male

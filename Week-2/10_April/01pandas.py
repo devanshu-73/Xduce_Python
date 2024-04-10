@@ -1,21 +1,23 @@
 # Pandas: 
+#    0) Pandas Installation , Importing into Py file
 #    1) Series [Columns]
 #    2) Data Frames [Combination of Multiple Series]
+#    3) Reading Data from Excel Sheet
+#    3) Reading Data from CSV File [Comma Separate Values]
+#    4) Pandas Inbuilt Fns : head(),tail(),value_counts()..
+#    4) Pandas attributes : shape,columns
 
 import pandas as pd
 
-# print(pd.__version__)  # Way of Checking Pandas Version 
+print(pd.__version__)  # Way of Checking Pandas Version 
 
 # ===================================================================
 
 print('***************  Series ***************')
 
 l1 = [11,22,33,44,55]
-
 s1 = pd.Series(l1)
-
-print("Series : \n",s1)
-
+print("Series :",s1)
 print("Type :",type(s1)) # Type of s1 : <class 'pandas.core.series.Series'>
 
 # ===================================================================
@@ -29,16 +31,28 @@ print('DataFrames :\n',df1)
 
 # ===================================================================
 
-print('***************  Reading Data from .csv ***************')
+print('***************  Reading Data from Excel Sheet ***************')
+
+excel1 = pd.read_excel('data.xlsx')
+print(excel1)
+
+print('***************  Reading Data from CSV[Comma Separate Values] ***************')
+
 csv1 = pd.read_csv('data.csv')
 
-csv1.index = [f'{i})' for i in range(1,len(csv1)+1)]
-print(csv1)
-
+csv1.index = [f'{i})' for i in range(1,len(csv1)+1)]        
+print(csv1) # All Data
+print(csv1['Name']) # Purticular Series(Column) Data
+print(csv1[['Name','Age']]) # Purticular Series(Column) Data        
 # ===================================================================
 
 print('***************  Pandas Inbuilt Fn ***************')
 
-print(csv1.shape) # Returns Tuple (Rows,Columns)
+# Functions
 print(csv1.head()) # head() return first n rows , Default value is 5
-print(csv1.tail()) # tail() return last n rows , Default value is 5
+print(csv1.tail()) # tail() return last n rows , Default value is 5 
+print(csv1['Gender'].value_counts()) # Returning Specific counts like male=14,female=10
+
+# Attributes
+print(csv1.shape) # Returns Tuple (Rows,Columns)
+print(csv1.columns) # Returns All Columns

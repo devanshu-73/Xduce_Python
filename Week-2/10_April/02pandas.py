@@ -20,7 +20,7 @@ print(csv_data[csv_data['Gender']== 'Male'])
 
 # Getting Data : Multiple Condition
 
-# print(csv_data[(csv_data['Gender']== 'Male') & (csv_data['Age'] >= 30)])
+print(csv_data[(csv_data['Gender']== 'Male') & (csv_data['Age'] >= 30)])
 
 # ===============================================================================
 
@@ -43,7 +43,7 @@ csv_data['Joining Bonus'] =  csv_data['Salary'].apply(joining_bonus)
 # ===============================================================================
 
 # Save the modified DataFrame in to new file
-# csv_data.to_csv('data_with_salary.csv', index=False)
+csv_data.to_csv('data_with_salary.csv', index=False)
 
 # Save the modified DataFrame in to new file
 csv_data.to_csv('data.csv', index=False)
@@ -54,13 +54,13 @@ csv_data.to_csv('data.csv', index=False)
 # Droping(Deleting) Columns : drop(columns='column_name',inplace=True(original_file affected))
 
 #Row
-# print(csv_data.drop(index=0)) # First row deleted not permanently
-# print(csv_data.drop(index=0,inplace=True)) # First row deleted permanently
+print(csv_data.drop(index=0)) # First row deleted not permanently
+print(csv_data.drop(index=0,inplace=True)) # First row deleted permanently
 
 # Column
 
-# print(csv_data.drop(columns='Joining Bonus')) # Column deleted not permanently
-# csv_data.drop(columns='Joining Bonus',inplace=True) # Column deleted permanently
+print(csv_data.drop(columns='Joining Bonus')) # Column deleted not permanently
+print(csv_data.drop(columns='Joining Bonus',inplace=True)) # Column deleted permanently
 
 
 # ===============================================================================

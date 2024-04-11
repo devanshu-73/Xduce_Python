@@ -1,25 +1,25 @@
-Name,Age,Location,Gender
-John,25,New York,Male
-Alice,30,Los Angeles,Female
-Bob,22,Chicago,Male
-Emma,28,San Francisco,Female
-Michael,35,Boston,Male
-Sophia,27,Miami,Female
-David,40,Dallas,Male
-Olivia,32,Seattle,Female
-James,29,Philadelphia,Male
-Ella,26,Atlanta,Female
-William,33,Houston,Male
-Ava,31,Denver,Female
-Matthew,24,Phoenix,Male
-Mia,29,Detroit,Female
-Andrew,36,Portland,Male
-Isabella,28,San Diego,Female
-Christopher,34,Minneapolis,Male
-Charlotte,30,Orlando,Female
-Daniel,37,Austin,Male
-Grace,23,Nashville,Female
-Alex,31,Chicago,Male
-Ryan,27,San Francisco,Male
-Tyler,29,Seattle,Male
-Brandon,32,Los Angeles,Male
+Name,Age,Location,Gender,Salary,Joining Bonus
+John,25,New York,Male,25000,3000
+Alice,30,Los Angeles,Female,30000,N/A
+Bob,22,Chicago,Male,22000,3000
+Emma,28,San Francisco,Female,28000,N/A
+Michael,35,Boston,Male,35000,N/A
+Sophia,27,Miami,Female,27000,N/A
+David,40,Dallas,Male,40000,N/A
+Olivia,32,Seattle,Female,32000,N/A
+James,29,Philadelphia,Male,29000,N/A
+Ella,26,Atlanta,Female,26000,N/A
+William,33,Houston,Male,33000,N/A
+Ava,31,Denver,Female,31000,N/A
+Matthew,24,Phoenix,Male,24000,3000
+Mia,29,Detroit,Female,29000,N/A
+Andrew,36,Portland,Male,36000,N/A
+Isabella,28,San Diego,Female,28000,N/A
+Christopher,34,Minneapolis,Male,34000,N/A
+Charlotte,30,Orlando,Female,30000,N/A
+Daniel,37,Austin,Male,37000,N/A
+Grace,23,Nashville,Female,23000,3000
+Alex,31,Chicago,Male,31000,N/A
+Ryan,27,San Francisco,Male,27000,N/A
+Tyler,29,Seattle,Male,29000,N/A
+Brandon,32,Los Angeles,Male,32000,N/A

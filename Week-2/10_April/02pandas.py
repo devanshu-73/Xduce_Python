@@ -4,7 +4,7 @@
 # 3) Adding Column
 # 4) Function : apply(your_function_name)  
 # 5) Save the modified DataFrame into New_File and Original File
-# 6) Droping(Deleting) Row : drop(index = row_number,inplace=True or False)
+# 6) Droping(Deleting) Row,columns : drop()
 
 
 import pandas as pd
@@ -50,9 +50,17 @@ csv_data.to_csv('data.csv', index=False)
 
 # ===============================================================================
  
-# Droping(Deleting) Row : drop(index = row_number,inplace=True(original_file affected),=False(not affected))
+# Droping(Deleting) Row : drop(index = row_number,inplace=True(original_file affected))
+# Droping(Deleting) Columns : drop(columns='column_name',inplace=True(original_file affected))
 
-print(csv_data.drop(index=0)) # First row deleted 
+#Row
+# print(csv_data.drop(index=0)) # First row deleted not permanently
 # print(csv_data.drop(index=0,inplace=True)) # First row deleted permanently
+
+# Column
+
+# print(csv_data.drop(columns='Joining Bonus')) # Column deleted not permanently
+# csv_data.drop(columns='Joining Bonus',inplace=True) # Column deleted permanently
+
 
 # ===============================================================================

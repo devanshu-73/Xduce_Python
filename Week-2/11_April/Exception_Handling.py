@@ -1,5 +1,4 @@
 # Exception Handling : Try Except
-
 import logging
 
 while True:
@@ -7,8 +6,6 @@ while True:
         num1 = int(input("Enter Number 1: "))
         num2 = int(input("Enter Number 2: "))
         div1 = num1 / num2
-        print("Answer:", div1)
-        break
     except ValueError as e:
         logging.exception(e)
     except ZeroDivisionError as e:
@@ -17,5 +14,6 @@ while True:
         logging.exception(e)
     else:
         print("No exceptions occurred.")
+        break
     finally: # Always runs exception occurs or not
         print("Finally Completed.....")

@@ -1,5 +1,13 @@
-# Context Manager
+# Context Manager : 
 
+# Ex : 2 We Can Create Own Context Manager
+
+with open("file.txt", "r") as f:
+    content = f.read()
+
+
+
+# Ex : 2 We Can Create Own Context Manager
 class ContextManager:
     def __enter__(self):
         print("Entering the Block")

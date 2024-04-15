@@ -1,11 +1,9 @@
-# Context Manager : 
+# Context Manager : 'With' Statement
 
-# Ex : 2 We Can Create Own Context Manager
+# Ex : 2 Context Manager Used With Files
 
 with open("file.txt", "r") as f:
     content = f.read()
-
-
 
 # Ex : 2 We Can Create Own Context Manager
 class ContextManager:

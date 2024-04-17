@@ -20,9 +20,6 @@ dog.speak()  # Op: Dog barks
 cat.speak()  # Op: Cat meows
 
 
-
-
-
 # Method Overloading: Python does not support method overloading 
 class Calculation:
     def add(self, x, y):

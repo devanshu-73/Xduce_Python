@@ -33,7 +33,7 @@ class Calculation:
 
 math = Calculation()
 
-print(math.add(2, 3))       # Error: add() missing 1 required positional argument: 'z'
+# print(math.add(2, 3))       # Error: add() missing 1 required positional argument: 'z'
 print(math.add(2, 3, 4))    # Output: 9
 
 #

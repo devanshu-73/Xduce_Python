@@ -18,20 +18,27 @@ table_element = driver.find_element(By.ID, 'holidayCalendarData')
 columns = table_element.find_elements(By.XPATH, '//*[@id="holidayCalendarData"]/thead[1]/tr/th')
 rows =  table_element.find_elements(By.TAG_NAME,'tr')
 
-data = []
-# columns_data = [i.text for i in columns]
-# print("Columns:",columns_data)
+columns_data = [i.text for i in columns]
+row_data = []
 
 for row in rows:
     cells = row.find_elements(By.TAG_NAME,'td')
-    row_data = [cell for cell in cells if len(cell.text) != 0]
-    data.append(row_data)
+    data = [cell.text for cell in cells if cell.text.strip()]
+    if data:
+        row_data.append(data)
 
-# print("Rows:",data)
+# print("Columns:",columns_data)
+# print("Rows:",row_data)
 
 
 
-# df = pd.DataFrame(data[2:], columns=data[0])
+df = pd.DataFrame(row_data, columns=columns_data)
 # print(df)
+
+# Save the DataFrame to an Excel file
+excel_file = "holiday_calendar.xlsx"
+df.to_excel(excel_file, index=False)
+
+print("Data saved to", excel_file)
 
 driver.quit()

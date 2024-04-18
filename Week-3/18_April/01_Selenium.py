@@ -23,7 +23,7 @@ row_data = []
 
 for row in rows:
     cells = row.find_elements(By.TAG_NAME,'td')
-    data = [cell.text for cell in cells if cell.text.strip()]
+    data = [cell.text.strip() for cell in cells]
     if data:
         row_data.append(data)
 

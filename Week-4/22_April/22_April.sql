@@ -77,3 +77,5 @@ delete from table1 where name = 'abigail';
 SELECT * FROM table1 WHERE age >= 20 AND age <= 30;
 select * from table1 where age between 20 and 30; -- between includes 20 and 30 also
 -- -------------------------------------------------------------------------
+
+

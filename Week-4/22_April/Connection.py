@@ -6,7 +6,7 @@ def Connection_to_mysql():
         user = 'root',
         password ='root',
         database = 'practice',
-        port = 3306
-        # cursorclass = pymysq;cursors.DictCursor
+        port = 3306,
+        autocommit = True
     )
     return connection

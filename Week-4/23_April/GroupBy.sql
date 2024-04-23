@@ -1,25 +1,23 @@
 use sakila;
 
 -- Group BY : groups rows that have the same values into table rows
+-- =========================================================================================================
+
 -- Get FirstName Of Customers Who Purchased Most and With total Purchased Amount
-select c.first_name,sum(p.amount),p.rental_id 
+select c.first_name,sum(p.amount)
 from customer as c 
 right join payment as p on c.customer_id = p.customer_id 
 group by first_name;
  
 -- Number of rentals per customer: Count the number of rentals made by each customer.
 
-
-
-
--- SELECT c.customer_id, CONCAT(c.first_name, ' ', c.last_name) AS customer_name, COUNT(r.rental_id) AS num_rentals
--- FROM customer c
--- LEFT JOIN rental r ON c.customer_id = r.customer_id
--- GROUP BY c.customer_id;
+select c.first_name,count(r.rental_id) as Nums 
+from customer as c 
+left join rental as r on c.customer_id = r.customer_id 
+group by c.first_name;
 
 -- Film Table
 select special_features,count(special_features) from film group by special_features;
-
 
 -- =========================================================================================================
 -- Aggregate Function : 

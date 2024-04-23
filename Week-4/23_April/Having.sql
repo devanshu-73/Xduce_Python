@@ -6,14 +6,17 @@ use practice;
 
 -- Count of People in Each City with More than 30 Years of Age:
 
-select city_name,count(*) as people from table1 group by city_name having avg(age) > 30;
+select city_name,count(*) as people30
+from table1
+group by city_name
+having avg(age) > 30;
 
 -- List Cities with Average Age Above 35 and More Than 1 Residents:
 
-select city_name, avg(age) as avg_age, COUNT(*) as num_people
+select city_name, avg(age) as avg_age, count(*) as people35
 from table1
 group by city_name
-having avg(age) > 35 and COUNT(*) > 1;
+having avg_age > 35 and people35 > 1;
 
 select * from table1;
 

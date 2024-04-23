@@ -17,8 +17,8 @@ select film.film_id,film.title,film_category.category_id from film left join fil
 -- Right (Outer) Join : 'table1 RIGHT JOIN table2'
 select film.film_id,film.title,film_category.category_id from film right join film_category on film.film_id = film_category.film_id;
 
--- Full (Outer) Join : 'table1 CROSS JOIN table2'
--- select * from actor full join film_actor on  actor.actor_id = film_actor.actor_id;
+-- Full (Outer) Join : 'table1 FULL JOIN table2'
+select * from actor full join film_actor on  actor.actor_id = film_actor.actor_id;
 
 -- --------------------------------------------------------
 -- Count

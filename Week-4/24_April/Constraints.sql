@@ -60,5 +60,42 @@ from student
 group by s_name
 order by result desc;
 
-
 select * from student;
+
+-- Create the customers table
+create table customers (
+    customer_id int primary key,
+    customer_name varchar(255) not null
+);
+
+-- ====================================================================================================
+-- Foreign Key : used to link two tables together.
+
+create table customers (
+    customer_id int primary key,
+    customer_name varchar(255) not null
+);
+
+create table orders (
+    order_id int primary key,
+    order_date date,
+    amount int,
+    customer_id int,
+    foreign key (customer_id) references customers(customer_id)
+);
+
+insert into customers values
+    (1, 'John Doe'),
+    (2, 'Jane Smith'),
+    (3, 'Michael Johnson'),
+    (4, 'Emily Brown'),
+    (5, 'William Davis'),
+    (6, 'Olivia Wilson');
+
+insert into orders values 
+    (101, '2024-04-24', 150.00, 1),  -- Order 101 is associated with customer 1 (John Doe)
+    (102, '2024-04-25', 200.00, 2),  -- Order 102 is associated with customer 2 (Jane Smith)
+    (103, '2024-04-26', 100.00, 3), -- Order 103 is associated with customer 3 (Michael Johnson)
+	(104, '2024-04-27', 120.00, 4),  -- Order 104 is associated with customer 4 (Emily Brown)
+    (105, '2024-04-28', 180.00, 5),  -- Order 105 is associated with customer 5 (William Davis)
+    (106, '2024-04-29', 90.00, 6); 	-- Order 106 is associated with customer 6 (Olivia Wilson)

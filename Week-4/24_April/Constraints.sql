@@ -37,9 +37,9 @@ insert into person values
 create table student (
 s_id int primary key,
 s_name varchar(255) not null,
-physics_marks int,
-maths_marks int,
-chemistry_marks int);
+physics int,
+maths int,
+chemistry int);
 
 insert into student values 
     (01, 'Liam', 97, 91, 87), 
@@ -53,7 +53,9 @@ insert into student values
     (09, 'Tara', 96, 84, 56), 
     (10, 'Karen', 91, 85, 67);
 
-select s_name,sum(physics_marks+maths_marks+chemistry_marks) as Total_Marks,(sum(physics_marks+maths_marks+chemistry_marks)/3) as Result
+select s_name,
+	sum(physics+maths+chemistry) as Total_Marks,
+	sum(physics+maths+chemistry)/3 as Result
 from student
 group by s_name
 order by result desc;

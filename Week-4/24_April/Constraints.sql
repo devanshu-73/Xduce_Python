@@ -62,12 +62,6 @@ order by result desc;
 
 select * from student;
 
--- Create the customers table
-create table customers (
-    customer_id int primary key,
-    customer_name varchar(255) not null
-);
-
 -- ====================================================================================================
 -- Foreign Key : used to link two tables together.
 

@@ -22,7 +22,9 @@ select film.film_id,film.title,film_category.category_id from film left join fil
 select film.film_id,film.title,film_category.category_id from film right join film_category on film.film_id = film_category.film_id;
 
 -- Full (Outer) Join : 'table1 FULL JOIN table2'
-select film.film_id,film.title,film_category.category_id from film full join film_category on film.film_id = film_category.film_id;
+select film.film_id,film.title,film_category.category_id from film left join film_category on film.film_id = film_category.film_id
+union
+select film.film_id,film.title,film_category.category_id from film right join film_category on film.film_id = film_category.film_id;
 
 -- --------------------------------------------------------
 

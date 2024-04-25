@@ -1,6 +1,6 @@
 # ACID Properties :
     - In order to maintain consistency in a database, before and after the transaction,
-      certain properties are followed These are called ACID properties. 
+      certain properties are followed. These are called ACID properties. 
 
 ## Atomicity : All Or Nothing Rule
     - Each transaction is considered as one unit and either runs to completion or is not executed at all.
@@ -18,7 +18,7 @@
     - Total after T occurs = 400 + 300 = 700.
 
 
-## Isolation : 
+## Isolation : Concurrent Transactions are Isolated From Each Other
     - multiple transactions can occur concurrently without leading to the inconsistency of the database state.
     - Transactions occur independently without interference. 
 
@@ -31,6 +31,14 @@
 
     - Suppose T has been executed till Read (Y) and then T’’ starts.
     - As a result, interleaving of operations takes place due to which T’’ reads the correct value of X but the incorrect value of Y and sum computed by 
-    T’’: (X+Y = 50, 000+500=50, 500) 
+    T’’: (X+Y = 50, 000+500=50, 500)
     is thus not consistent with the sum at end of the transaction: 
     T: (X+Y = 50, 000 + 450 = 50, 450).
+    - This results in database inconsistency, due to a loss of 50 units.
+    - Hence, transactions must take place in isolation and changes should be visible only after they have been made to the main memory.
+
+## Durability : Data is Persisted After Transaction is Commited Even in a System Failure
+
+    - once the transaction has completed execution, the updates and modifications to the database
+      are stored in and written to disk and they persist even if a system failure occurs.
+    - These updates now become permanent and are stored in non-volatile memory.

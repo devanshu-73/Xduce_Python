@@ -6,4 +6,4 @@
 
 ![img](https://media.geeksforgeeks.org/wp-content/uploads/11-6.jpg)
 
-[<img src="https://media.geeksforgeeks.org/wp-content/uploads/11-6.jpg" width="550"/>](image.png)
+[<img src="https://media.geeksforgeeks.org/wp-content/uploads/11-6.jpg" width="550"/>](image)

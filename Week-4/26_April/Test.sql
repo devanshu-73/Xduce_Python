@@ -78,10 +78,7 @@ values
 (5,'executive',3500,'2023-4-16');
 
 select * from emp_postion;
-
-select salary from (
-select distinct salary from emp_postion order by salary desc limit 2,1
-);
+select distinct salary from emp_postion order by salary desc limit 2,1;
 
 -- Q - 14
 
@@ -94,4 +91,56 @@ values
 select * from emp_postion;
 
 select *,count(*) occurrences from emp_postion group by emp_id,empposition,salary,joining_date having count(*) > 1;
+
+
+SET SESSION group_concat_max_len = 1000000; -- Set a sufficient length for GROUP_CONCAT
+
+SET @columns = NULL;
+
+SELECT GROUP_CONCAT(column_name) INTO @columns
+FROM information_schema.columns
+WHERE table_schema = 'test' AND table_name = 'emp_postion';
+
+SET @sql = CONCAT('
+    SELECT ', @columns, ', COUNT(*) AS occurrence
+    FROM emp_postion
+    GROUP BY ', @columns, '
+    HAVING COUNT(*) > 1
+');
+
+PREPARE stmt FROM @sql;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
+
+
+
+
+
+-- SELECT DISTINCT * FROM emp_postion;
+
+-- Step 1: Generate the condition for comparing all columns
+-- SELECT GROUP_CONCAT(CONCAT('t1.`', column_name, '` = t2.`', column_name, '`') ORDER BY ordinal_position SEPARATOR ' AND ')
+-- INTO @condition
+-- FROM information_schema.columns
+-- WHERE table_name = 'emp_postion';
+
+-- -- Step 2: Generate the SQL query dynamically
+-- SET @sql = CONCAT(
+--     'SELECT t1.* FROM emp_postion t1 ',
+--     'JOIN emp_postion t2 ON (', 
+--     @condition,
+--     ') ',
+--     'WHERE t1.emp_id <> t2.emp_id'
+-- );
+
+-- -- Step 3: Prepare and execute the dynamic SQL query
+-- PREPARE stmt FROM @sql;
+-- EXECUTE stmt;
+
+
+
+
+
+
+
 

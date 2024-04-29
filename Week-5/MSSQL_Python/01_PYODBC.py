@@ -1,4 +1,5 @@
 import pyodbc
+import pandas as pd
 
 SERVER = r'DEVANSHU-DTS\SQL'
 DATABASE = 'DETAILS'
@@ -13,13 +14,20 @@ try:
     cursor = conn.cursor()
 
     cursor.execute(
-        "IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'dbo' AND TABLE_NAME = 'CLASS') CREATE TABLE CLASS (SID INT IDENTITY(101,1) PRIMARY KEY,SNAME VARCHAR(20));"
+        "CREATE TABLE IF NOT EXISTS CLASS (SID INT IDENTITY(101,1) PRIMARY KEY,SNAME VARCHAR(20));"
     )
+
+    cursor.execute(
+        "INSERT INTO CLASS (SNAME) VALUES ('DEVANSHU'),('MOHSIN');"
+    )
+
     query = cursor.execute("SELECT * FROM CLASS;")
     data = query.fetchall()
-    
-    # "INSERT INTO CLASS (SNAME) VALUES ('DEVANSHU'),('MOHSIN');"
-    print(data)
+    print(data)    
+
+    df = pd.DataFrame(data, columns=[desc[0] for desc in query.description])
+
+    print(df)
     conn.commit()
     print('Successfully executed....')
     

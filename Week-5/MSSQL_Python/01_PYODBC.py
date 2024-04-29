@@ -13,9 +13,11 @@ try:
     
     cursor = conn.cursor()
 
-    cursor.execute(
-        "CREATE TABLE IF NOT EXISTS CLASS (SID INT IDENTITY(101,1) PRIMARY KEY,SNAME VARCHAR(20));"
-    )
+    # Check if the table CLASS exists before creating it
+    if not cursor.tables(table='CLASS', tableType='TABLE').fetchone():
+        cursor.execute(
+            "CREATE TABLE CLASS (SID INT IDENTITY(101,1) PRIMARY KEY,SNAME VARCHAR(20));"
+        )
 
     cursor.execute(
         "INSERT INTO CLASS (SNAME) VALUES ('DEVANSHU'),('MOHSIN');"

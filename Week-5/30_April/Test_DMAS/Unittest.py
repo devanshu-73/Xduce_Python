@@ -8,8 +8,6 @@ class TestCalculations1(unittest.TestCase):
     def setUp(self):
         self.a = 10
         self.b = 5
-        self.x = 100
-        self.y = 50
         print('SetUp Called')
 
     def tearDown(self):
@@ -33,22 +31,30 @@ class TestCalculations1(unittest.TestCase):
         print('testdiv Completed Successfully')
 
         
-class TestCalculations2(unittest.TestCase,Setup_Teardown):
+class TestCalculations2(unittest.TestCase):
+    def setUp(self):
+        self.x = 100
+        self.y = 50
+        print('SetUp Called')
+
+    def tearDown(self):
+        print('TearDown Called')
+
     def test_add(self):
         res = add(self.x,self.y)
-        self.assertEqual(res,self.a+self.b,msg='Wrong Output')
+        self.assertEqual(res,self.x+self.y,msg='Wrong Output')
         print('test_add Completed Successfully') 
     def test_sub(self):
         res = sub(self.x,self.y)
-        self.assertEqual(res,self.a+self.b,msg='Wrong Output')
+        self.assertEqual(res,self.x-self.y,msg='Wrong Output')
         print('test_sub Completed Successfully')
     def testmul(self):
         res = mul(self.x,self.y)
-        self.assertEqual(res,self.a+self.b,msg='Wrong Output')
+        self.assertEqual(res,self.x*self.y,msg='Wrong Output')
         print('testmul Completed Successfully')
     def testdiv(self):
         res = div(self.x,self.y)
-        self.assertEqual(res,self.a+self.b,msg='Wrong Output')
+        self.assertEqual(res,self.x/self.y,msg='Wrong Output')
         print('testdiv Completed Successfully')
 
 

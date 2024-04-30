@@ -1,7 +1,7 @@
 from program import addition as add,subtraction as sub,multiplication as mul,division as div;
 import unittest
 
-# before test function 'test' word is mandatory and '_' is not mandatory  
+# before test function 'test' word is mandatory,'_' not manadatory 
 # Every unit test run independently and if it gives error then it does not impact of another unit test output
 
 class TestCalculations1(unittest.TestCase):

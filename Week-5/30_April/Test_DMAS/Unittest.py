@@ -33,23 +33,23 @@ class TestCalculations1(unittest.TestCase):
         print('testdiv Completed Successfully')
 
         
-# class TestCalculations2(unittest.TestCase,Setup_Teardown):
-#     def test_add(self):
-#         res = add(self.x,self.y)
-#         self.assertEqual(res,self.a+self.b,msg='Wrong Output')
-#         print('test_add Completed Successfully') 
-#     def test_sub(self):
-#         res = sub(self.x,self.y)
-#         self.assertEqual(res,self.a+self.b,msg='Wrong Output')
-#         print('test_sub Completed Successfully')
-#     def testmul(self):
-#         res = mul(self.x,self.y)
-#         self.assertEqual(res,self.a+self.b,msg='Wrong Output')
-#         print('testmul Completed Successfully')
-#     def testdiv(self):
-#         res = div(self.x,self.y)
-#         self.assertEqual(res,self.a+self.b,msg='Wrong Output')
-#         print('testdiv Completed Successfully')
+class TestCalculations2(unittest.TestCase,Setup_Teardown):
+    def test_add(self):
+        res = add(self.x,self.y)
+        self.assertEqual(res,self.a+self.b,msg='Wrong Output')
+        print('test_add Completed Successfully') 
+    def test_sub(self):
+        res = sub(self.x,self.y)
+        self.assertEqual(res,self.a+self.b,msg='Wrong Output')
+        print('test_sub Completed Successfully')
+    def testmul(self):
+        res = mul(self.x,self.y)
+        self.assertEqual(res,self.a+self.b,msg='Wrong Output')
+        print('testmul Completed Successfully')
+    def testdiv(self):
+        res = div(self.x,self.y)
+        self.assertEqual(res,self.a+self.b,msg='Wrong Output')
+        print('testdiv Completed Successfully')
 
 
 if __name__ == '__main__':

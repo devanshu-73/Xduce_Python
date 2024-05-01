@@ -1,12 +1,19 @@
-import pytest
-import data.functions as functions
+import pytest,sys
+sys.path.append('..')
+from data.functions import add,sub,mul,div
 
 def test_add():
-    res = functions.add(10,5)
+    res = add(10,5)
     assert res == 15
 
 def test_sub():
-    res = functions.sub(10,5)
+    res = sub(10,5)
     assert res == 5
 
-# if __name__ == '__main__':
+def test_mul():
+    res = mul(10,5)
+    assert res == 50
+
+def test_div():
+    res = div(10,5)
+    assert res == 2

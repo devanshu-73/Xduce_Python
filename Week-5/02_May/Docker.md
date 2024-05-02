@@ -60,7 +60,7 @@ Images: Blueprints for containers. They contain everything needed to run an appl
 Containers: Running instances of images. They encapsulate an application and its environment, isolated from other containers and the host system.
 
 
-# 
+# (5) Public and Private Registries
 ## Public Registries:
    - ### Repositories where Docker images are stored and can be accessed by anyone. Examples include Docker Hub and Google Container Registry.
 ## Private Registries:

@@ -17,4 +17,4 @@
 
 
 # (1) What and Why Of Docker?
-![Docker Img](Docker\D1.png)
+![Docker Img](/Docker/D1.png)

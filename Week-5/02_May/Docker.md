@@ -14,7 +14,7 @@
    - ### (8.1) Pull,Run,Start,Stop,Logs,Build
 ## (9) Image Versioning
 
-# ======================================================
+# ===============================
 
 # (1) What and Why Of Docker?
 ![Docker Img](D1.png)

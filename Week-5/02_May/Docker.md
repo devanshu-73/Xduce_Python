@@ -18,7 +18,10 @@
 
 # (1) What is Docker and why is it used?
 
-![Docker Img](D1.png)
+# Docker Architecture
+
+![Docker Img](https://docs.docker.com/get-started/images/docker-architecture.webp)
+
 ## What is Docker ?
    - ### Docker is a containerization platform that allows developers to package applications and their dependencies into a standardized unit called a container.
    - ### Containers provide consistency across different environments, making it easier to develop, deploy, and scale applications.

@@ -18,5 +18,3 @@
 
 # (1) What and Why Of Docker?
 ![Docker Img](D1.png)
-
-<img src="D1.png" alt="Alt text">

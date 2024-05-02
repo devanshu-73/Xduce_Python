@@ -17,4 +17,5 @@
 # ======================================================
 
 # (1) What and Why Of Docker?
-![Docker Img](Week-5\02_May\D1.png)
+<!-- ![Docker Img](Week-5\02_May\D1.png) -->
+<img src="D1.png" alt="Alt text">

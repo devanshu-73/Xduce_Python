@@ -39,3 +39,29 @@
 
    ### Scalability:
    - #### Docker containers can be quickly spun up or down, allowing for dynamic scaling of applications based on demand.
+
+
+# (2) Docker Containers vs Virtual Machines
+
+| Docker Containers       | Virtual Machines            |
+|-------------------------|-----------------------------|
+| Lightweight             | Heavyweight                 |
+| Share host OS kernel    | Each VM has its own OS      |
+| Faster startup time     | Slower startup time         |
+| Less resource overhead  | Higher resource overhead    |
+| Greater scalability     | Less scalability            |
+
+# (3) Install Docker Locally
+
+## Use this Link to Download : https://www.docker.com/products/docker-desktop/ 
+
+# (4) Images Vs Containers
+Images: Blueprints for containers. They contain everything needed to run an application, including code, runtime, libraries, and dependencies.
+Containers: Running instances of images. They encapsulate an application and its environment, isolated from other containers and the host system.
+
+
+# 
+## Public Registries:
+   - ### Repositories where Docker images are stored and can be accessed by anyone. Examples include Docker Hub and Google Container Registry.
+## Private Registries:
+   - ### Repositories for storing Docker images privately within an organization. They provide control over access and distribution of images.

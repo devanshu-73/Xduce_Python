@@ -28,20 +28,22 @@
 
 ## Why Docker?
 
-   ### Portability: 
+   ### Portability : 
    - #### Containers can run on any platform that supports Docker, making it easy to move applications between environments.
 
-   ### Isolation: 
+   ### Isolation : 
    - #### Containers provide process isolation, ensuring that applications run consistently regardless of the underlying infrastructure.
    
-   ### Efficiency:
+   ### Efficiency :
    - #### Containers share the host operating system kernel, resulting in lightweight and efficient deployments.
 
-   ### Scalability:
+   ### Scalability :
    - #### Docker containers can be quickly spun up or down, allowing for dynamic scaling of applications based on demand.
 
 
 # (2) Docker Containers vs Virtual Machines
+
+![Docker Img](Docker_02.png)
 
 | Docker Containers       | Virtual Machines            |
 |-------------------------|-----------------------------|
@@ -51,17 +53,20 @@
 | Less resource overhead  | Higher resource overhead    |
 | Greater scalability     | Less scalability            |
 
+
 # (3) Install Docker Locally
 
 ## Use this Link to Download : https://www.docker.com/products/docker-desktop/ 
 
 # (4) Images Vs Containers
-Images: Blueprints for containers. They contain everything needed to run an application, including code, runtime, libraries, and dependencies.
-Containers: Running instances of images. They encapsulate an application and its environment, isolated from other containers and the host system.
+   ## Images :
+   - ### Blueprints for containers. They contain everything needed to run an application, including code, runtime, libraries, and dependencies.
+   ## Containers :
+   - ### Running instances of images. They encapsulate an application and its environment, isolated from other containers and the host system.
 
 
 # (5) Public and Private Registries
-## Public Registries:
+## Public Registries :
    - ### Repositories where Docker images are stored and can be accessed by anyone. Examples include Docker Hub and Google Container Registry.
-## Private Registries:
+## Private Registries :
    - ### Repositories for storing Docker images privately within an organization. They provide control over access and distribution of images.

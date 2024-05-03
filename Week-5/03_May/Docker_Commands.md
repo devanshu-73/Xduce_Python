@@ -12,11 +12,11 @@
     - List all running Docker containers.
 ## 6. docker ps -a :
     - List all Docker containers (including stopped ones).
-## 7. docker run [OPTIONS] [IMAGE] [COMMAND] [ARG...] :
+## 7. docker run [IMAGE] [COMMAND] :
     - Run a command in a new container.
-## 8. docker exec [OPTIONS] CONTAINER COMMAND [ARG...] :
+## 8. docker exec CONTAINER COMMAND :
     - Run a command in a running container.
-## 9. docker build [OPTIONS] PATH :
+## 9. docker build PATH :
     - Build an image from a Dockerfile.
 ## 10. docker push [IMAGE_NAME] :
     - Push an image to a Docker registry.

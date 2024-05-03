@@ -43,7 +43,7 @@
 
 # (2) Docker Containers vs Virtual Machines
 
-![Docker Img](Docker_02.png)
+![Docker Img](images/Docker_02.png)
 
 | Docker Containers       | Virtual Machines            |
 |-------------------------|-----------------------------|

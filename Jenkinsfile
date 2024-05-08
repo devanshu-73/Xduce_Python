@@ -13,7 +13,7 @@ pipeline {
                     // Print current directory for debugging
                     bat 'dir'
                     
-                    // bat 'python Test_Git_Hub.py'
+                    bat 'python Week-1/2_April.py'
                 }
             }
         }

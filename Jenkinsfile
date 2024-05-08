@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git branch: 'main', url: 'https://github.com/devanshu-73/Jenkins_Github.git'
+                git branch: 'main', url: 'https://github.com/devanshu-73/Xduce_Python.git'
             }
         }
         stage('Run Python Script') {

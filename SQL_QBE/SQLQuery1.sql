@@ -1,62 +1,22 @@
-use DETAILS;
 
--- -------------------------------------------------------------------------
--- Create : To Create Database and Table
-
-create table table1 (id int primary key,
-name varchar(255) not null,
-age int not null);
--- -------------------------------------------------------------------------
--- Insert : To Add Data in Table
-
-insert into table1 values 
-(01,'Dev',24),
-(02,'Yash',45),
-(03,'Sahil',12);
-
-insert into table1 values 
-(04,'Devanshu',21),(05,'Mohsin',45),(06,'Gaurang',12),(07, 'Emma', 30),(08, 'Liam', 28),
-(09, 'Olivia', 35),(10, 'Noah', 19),(11, 'Ava', 25),(12, 'William', 32),
-(13, 'Sophia', 27),(14, 'James', 40),(15, 'Isabella', 22),(16, 'Benjamin', 38),
-(17, 'Mia', 29),(18, 'Mason', 33),(19, 'Charlotte', 26),(20, 'Elijah', 31),
-(21, 'Amelia', 24),(22, 'Lucas', 37),(23, 'Harper', 23),(24, 'Alexander', 36),
-(25, 'Evelyn', 34),(26, 'Michael', 39),(27, 'Abigail', 20);
-
--- AND , BETWEEN
-
-SELECT * FROM table1 WHERE age >= 20 AND age <= 30;
-select * from table1 where age between 20 and 30; -- between includes 20 and 30 also
--- -------------------------------------------------------------------------
-
--- ==================================================================================================
-
-select * from CLASS;
-
-select * from EMPLOYEES;
-
-
-
--- join
-
--- Inner Join
-select c.SID,e.E_ID,c.SNAME,e.FNAME from CLASS c inner join EMPLOYEES e on c.SID = e.E_ID;
-
--- Left Join
-select c.SID,e.E_ID,c.SNAME,e.FNAME from CLASS c left join EMPLOYEES e on c.SID = e.E_ID;
-
--- Right Join
-select c.SID,e.E_ID,c.SNAME,e.FNAME from CLASS c right join EMPLOYEES e on c.SID = e.E_ID;
-
--- Full Join
-select c.SID,e.E_ID,c.SNAME,e.FNAME from CLASS c full join EMPLOYEES e on c.SID = e.E_ID;
-
-
--- Store Procedure
-
-create procedure procedure1
-as 
+create procedure procedure01
+as
 begin
-	select * from EMPLOYEES;
+IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'student_details' AND TABLE_SCHEMA = 'dbo')
+BEGIN
+	create table DBO.student_details (
+		name varchar(255) not null,
+		age int not null);
+	insert into DBO.student_details (name,age) values 
+		('Dev',24),('Yash',45),('Sahil',12),('Devanshu',21),('Mohsin',45),('Gaurang',12),
+		('Emma', 30),('Liam', 28),('Olivia', 35),('Noah', 19),('Ava', 25),('William', 32),
+		('Sophia', 27),('James', 40),('Isabella', 22),('Benjamin', 38),('Mia', 29),('Mason', 33),
+		('Charlotte', 26),('Elijah', 31),('Amelia', 24),('Lucas', 37),('Harper', 23),('Alexander', 36),
+		('Evelyn', 34),('Michael', 39),('Abigail', 20);
+		END
+	select * from student_details;
 end;
 
-exec procedure1;
+exec procedure01;
+
+drop procedure procedure01;

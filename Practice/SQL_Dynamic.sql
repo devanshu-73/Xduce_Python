@@ -1,5 +1,4 @@
 CREATE TABLE ExampleTable (
-    ID INT PRIMARY KEY AUTO_INCREMENT,
     Column1 VARCHAR(50),
     Column2 VARCHAR(50),
     Column3 VARCHAR(50),
@@ -48,16 +47,15 @@ SET @columns = NULL;
 
 SELECT GROUP_CONCAT(column_name) INTO @columns
 FROM information_schema.columns
-WHERE table_schema = 'test' AND table_name = 'ExampleTable'
-AND column_name != 'ID'; -- Exclude the ID column
+WHERE table_schema = 'test' AND table_name = 'ExampleTable';
+
 
 -- Construct the dynamic SQL query
 SET @sql = CONCAT('
-    SELECT ID, COUNT(*) AS occurrence
+    SELECT *
     FROM ExampleTable
-    GROUP BY ', @columns, '
-    HAVING COUNT(*) > 1
-');
+    GROUP BY ', @columns
+);
 
 -- Prepare and execute the dynamic SQL query
 PREPARE stmt FROM @sql;

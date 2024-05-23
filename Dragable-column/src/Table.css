@@ -1,0 +1,56 @@
+/* Base styles for the table */
+.draggable-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  color: #333;
+}
+
+/* Styles for the table headers */
+.draggable-table th {
+  background-color: #007BFF;
+  color: white;
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+  position: relative;
+  cursor: move; /* Indicate that the column is draggable */
+}
+
+/* Styles for the table rows */
+.draggable-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.draggable-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+/* Hover effect for table rows */
+.draggable-table tr:hover {
+  background-color: #ddd;
+}
+
+/* Better visual cue for draggable columns */
+.draggable-column {
+  cursor: grab; /* Change cursor to grab */
+}
+
+.draggable-column:active {
+  cursor: grabbing; /* Change cursor to grabbing when dragging */
+}
+
+/* Transition effect for columns during drag */
+.draggable-column {
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+/* Highlight the column being dragged */
+.draggable-column.dragging {
+  background-color: #0069d9;
+  color: white;
+}

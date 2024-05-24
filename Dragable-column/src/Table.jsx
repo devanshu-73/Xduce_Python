@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { DndContext, closestCenter } from '@dnd-kit/core';
-import { arrayMove, SortableContext, horizontalListSortingStrategy, verticalListSortingStrategy } from '@dnd-kit/sortable';
+import { arrayMove, SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable';
 import DraggableColumn from './DraggableColumn';
-import { restrictToHorizontalAxis, restrictToVerticalAxis } from '@dnd-kit/modifiers';
 
 const Table = ({ columns, setColumns }) => {
   const [columnHover, setColumnHover] = useState(false);
@@ -23,17 +22,13 @@ const Table = ({ columns, setColumns }) => {
     <DndContext
       collisionDetection={closestCenter}
       onDragEnd={handleDragEnd}
-      modifiers={[columnHover ? restrictToHorizontalAxis : restrictToVerticalAxis]}
     >
-      <SortableContext
-        items={columns.map(col => col.id)}
-        strategy={columnHover ? horizontalListSortingStrategy : verticalListSortingStrategy}
-      >
+      <SortableContext items={columns.map((col) => col.id)} strategy={verticalListSortingStrategy}>
         <table className="draggable-table">
           <thead>
             <tr>
               {columns.map((column) => (
-                <DraggableColumn key={column.id} column={column} setColumnHover={setColumnHover} />
+                <DraggableColumn key={column.id} column={column} />
               ))}
             </tr>
           </thead>

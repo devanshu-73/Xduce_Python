@@ -1,24 +1,19 @@
 import React from 'react';
 import { useSortable } from '@dnd-kit/sortable';
-import { CSS } from '@dnd-kit/utilities';
 
-const DraggableColumn = ({ column, setColumnHover }) => {
-  const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id: column.id });
-
-  const style = {
-    transform: CSS.Transform.toString(transform),
-    transition,
-  };
+const DraggableColumn = ({ column }) => {
+  const { attributes, listeners, setNodeRef, transform, isDragging } = useSortable({ id: column.id });
 
   return (
     <th
       ref={setNodeRef}
-      style={style}
-      className={`draggable-column ${isDragging ? 'dragging' : ''}`}
+      style={{
+        transform: transform ? `translate(${transform.x}px, ${transform.y}px)` : 'none',
+        opacity: isDragging ? 0.5 : 1,
+        cursor: 'grab',
+      }}
       {...attributes}
       {...listeners}
-      onMouseEnter={() => setColumnHover(true)}
-      onMouseLeave={() => setColumnHover(false)}
     >
       {column.title}
     </th>

@@ -1,13 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Table from './Table';
-import './Table.css'; // Ensure this CSS file is imported
+import './Table.css';
 
 const App = () => {
-  const [columns, setColumns] = useState([
-    { id: 'col-1', title: 'Name', data: ['John Doe', 'Jane Smith'] },
-    { id: 'col-2', title: 'Age', data: ['28', '34'] },
-    { id: 'col-3', title: 'Email', data: ['john.doe@example.com', 'jane.smith@example.com'] },
-  ]);
+  // Function to load columns from local storage
+  const loadColumns = () => {
+    const savedColumns = localStorage.getItem('columns');
+    return savedColumns ? JSON.parse(savedColumns) : [
+      { id: 'col-1', title: 'Name', data: ['John Doe', 'Jane Smith'] },
+      { id: 'col-2', title: 'Age', data: ['28', '34'] },
+      { id: 'col-3', title: 'Email', data: ['john.doe@example.com', 'jane.smith@example.com'] },
+    ];
+  };
+
+  const [columns, setColumns] = useState(loadColumns);
+
+  // save columns to local storage whenever they change
+  useEffect(() => {
+    localStorage.setItem('columns', JSON.stringify(columns));
+  }, [columns]);
 
   return (
     <div>

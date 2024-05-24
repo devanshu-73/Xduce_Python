@@ -3,19 +3,21 @@ import Table from './Table';
 import './Table.css';
 
 const App = () => {
-  // Function to load columns from local storage
-  const loadColumns = () => {
+  // Function to get columns from local storage or use default
+  const getInitialColumns = () => {
     const savedColumns = localStorage.getItem('columns');
-    return savedColumns ? JSON.parse(savedColumns) : [
+
+    if (savedColumns) {
+      return JSON.parse(savedColumns);
+    }
+    return [
       { id: 'col-1', title: 'Name', data: ['John Doe', 'Jane Smith'] },
       { id: 'col-2', title: 'Age', data: ['28', '34'] },
       { id: 'col-3', title: 'Email', data: ['john.doe@example.com', 'jane.smith@example.com'] },
     ];
   };
+  const [columns, setColumns] = useState(getInitialColumns);
 
-  const [columns, setColumns] = useState(loadColumns);
-
-  // save columns to local storage whenever they change
   useEffect(() => {
     localStorage.setItem('columns', JSON.stringify(columns));
   }, [columns]);

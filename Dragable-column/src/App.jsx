@@ -11,7 +11,7 @@ const App = () => {
       return JSON.parse(savedColumns);
     }
     return [
-      { id: 'col-1', title: 'Name', data: ['John Doe', 'Jane Smith'] },
+      { id: 'col-1', title: 'Name', data: ['Devanshu', 'Mohsin'] },
       { id: 'col-2', title: 'Age', data: ['28', '34'] },
       { id: 'col-3', title: 'Email', data: ['john.doe@example.com', 'jane.smith@example.com'] },
     ];

@@ -25,8 +25,8 @@ const App = () => {
     getDataFromLocalStorage();
   }, []);
 
-  const fileHandler = (event) => {
-    let fileObj = event.target.files[0];
+  const fileHandler = (e) => {
+    let fileObj = e.target.files[0];
 
     // just pass the fileObj as parameter
     ExcelRenderer(fileObj, (err, resp) => {

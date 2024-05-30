@@ -1,9 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ExcelRenderer } from 'react-excel-renderer';
 
 const App = () => {
   const [cols, setCols] = useState([]);
   const [rows, setRows] = useState([]);
+
+  // Save data to local storage
+  const saveDataToLocalStorage = (cols, rows) => {
+    localStorage.setItem('excelCols', JSON.stringify(cols));
+    localStorage.setItem('excelRows', JSON.stringify(rows));
+  };
+
+  // Retrieve data from local storage
+  const getDataFromLocalStorage = () => {
+    const savedCols = JSON.parse(localStorage.getItem('excelCols'));
+    const savedRows = JSON.parse(localStorage.getItem('excelRows'));
+    if (savedCols && savedRows) {
+      setCols(savedCols);
+      setRows(savedRows);
+    }
+  };
+
+  useEffect(() => {
+    getDataFromLocalStorage();
+  }, []);
 
   const fileHandler = (event) => {
     let fileObj = event.target.files[0];
@@ -15,15 +35,16 @@ const App = () => {
       } else {
         setCols(resp.cols);
         setRows(resp.rows);
+        saveDataToLocalStorage(resp.cols, resp.rows);
       }
     });
   };
 
   return (
     <div className="p-4">
-      <input 
-        type="file" 
-        onChange={fileHandler} 
+      <input
+        type="file"
+        onChange={fileHandler}
         className="mb-4 p-2 border border-gray-300 rounded"
       />
       <div>
@@ -33,8 +54,8 @@ const App = () => {
             <thead className="bg-gray-100">
               <tr>
                 {cols.map((col, index) => (
-                  <th 
-                    key={index} 
+                  <th
+                    key={index}
                     className="py-2 px-4 border-b border-gray-200 text-left text-sm font-semibold text-gray-700"
                   >
                     {col.name}
@@ -46,8 +67,8 @@ const App = () => {
               {rows.map((row, rowIndex) => (
                 <tr key={rowIndex} className="even:bg-gray-50">
                   {cols.map((col, colIndex) => (
-                    <td 
-                      key={colIndex} 
+                    <td
+                      key={colIndex}
                       className="py-2 px-4 border-b border-gray-200 text-sm text-gray-700"
                     >
                       {row[colIndex]}

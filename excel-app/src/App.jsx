@@ -1,35 +1,68 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react';
+import * as XLSX from 'xlsx';
+import FileUpload from './components/FileUpload';
+import SheetSelector from './components/SheetSelector';
+import DataGrid from './components/DataGrid';
+import './index.css'; // Ensure this points to the CSS file with Tailwind directives
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [sheets, setSheets] = useState([]);
+  const [data, setData] = useState([]);
+  const [columns, setColumns] = useState([]);
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = (event) => {
+      const binaryString = event.target.result;
+      const workbook = XLSX.read(binaryString, { type: 'binary' });
+
+      const sheetNames = workbook.SheetNames;
+      setSheets(sheetNames);
+
+      const firstSheet = sheetNames[0];
+      loadSheetData(workbook, firstSheet);
+    };
+
+    reader.readAsBinaryString(file);
+  };
+
+  const handleSheetChange = (sheetName) => {
+    const file = document.querySelector('input[type="file"]').files[0];
+    const reader = new FileReader();
+
+    reader.onload = (event) => {
+      const binaryString = event.target.result;
+      const workbook = XLSX.read(binaryString, { type: 'binary' });
+
+      loadSheetData(workbook, sheetName);
+    };
+
+    reader.readAsBinaryString(file);
+  };
+
+  const loadSheetData = (workbook, sheetName) => {
+    const worksheet = workbook.Sheets[sheetName];
+    const json = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+
+    const headers = json[0];
+    const rows = json.slice(1);
+
+    setColumns(headers);
+    setData(rows);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="container mx-auto p-4">
+      <h1 className="text-center text-2xl font-bold mb-4">Excel-like React App</h1>
+      <FileUpload onFileChange={handleFileChange} />
+      {sheets.length > 0 && (
+        <SheetSelector sheets={sheets} onSheetChange={handleSheetChange} />
+      )}
+      {data.length > 0 && <DataGrid columns={columns} data={data} />}
+    </div>
+  );
 }
 
-export default App
+export default App;

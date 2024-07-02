@@ -7,6 +7,5 @@ for i in range(1, 6):
     print(i)
     logging.info("Counting End SuccessFully!....")
 
-# Just Practice
 # logging.basicConfig(level=logging.DEBUG,
 #                     format='%(asctime)s - %(levelname)s - %(message)s')

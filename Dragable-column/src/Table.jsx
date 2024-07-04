@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { DndContext, closestCenter } from '@dnd-kit/core';
 import { arrayMove, SortableContext, verticalListSortingStrategy, horizontalListSortingStrategy } from '@dnd-kit/sortable';
 import DraggableColumn from './DraggableColumn';
-import './Table.css'; // Import the CSS file
+import './Table.css';
 
 const Table = ({ columns, setColumns }) => {
   const [columnHover, setColumnHover] = useState(false);

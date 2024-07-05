@@ -1,4 +1,4 @@
-/* Base styles for the table */
+
 .draggable-table {
   width: 100%;
   border-collapse: collapse;
@@ -8,7 +8,6 @@
   color: #333;
 }
 
-/* Styles for the table headers */
 .draggable-table th {
   background-color: #007BFF;
   color: white;
@@ -16,43 +15,37 @@
   border: 1px solid #ddd;
   text-align: left;
   position: relative;
-  cursor: move; /* Indicate that the column is draggable */
+  cursor: move;
 }
 
-/* Styles for the table rows */
 .draggable-table tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 
-/* Hover effect for table rows */
 .draggable-table tr:hover {
   background-color: #ddd;
 }
 
-/* Better visual cue for draggable columns */
 .draggable-column {
-  cursor: grab; /* Change cursor to grab */
+  cursor: grab; 
 }
 
 .draggable-column:active {
-  cursor: grabbing; /* Change cursor to grabbing when dragging */
+  cursor: grabbing; 
 }
 
-/* Highlight the column being dragged */
 .draggable-column.dragging {
   background-color: #0069d9;
   color: white;
 }
 
-/* Styles for the table cells */
 .draggable-table td {
   padding: 10px;
   border: 1px solid #ddd;
   text-align: left;
 }
 
-/* Transition effect for cells during drag */
 .draggable-table td.dragging {
-  transition: background-color 0.2s ease; /* Transition effect for background-color */
-  background-color: #f0f0f0; /* Change background color while dragging */
+  transition: background-color 0.2s ease;
+  background-color: #f0f0f0; 
 }

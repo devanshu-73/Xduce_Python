@@ -10,8 +10,8 @@ function MyDraggableComponent() {
     <Draggable
         onDrag={eventHandler}>
         <div style={{border: "2px solid red", padding: "1rem", width: "5%"}}>
-          {/* <div className="handle">Drag from here</div>
-          <div>This readme is really dragging on the onDrag react event listener...</div> */}
+          <div className="handle">Drag from here</div>
+          <div>This readme is really dragging on the onDrag react event listener...</div>
         </div>
     </Draggable>
   )

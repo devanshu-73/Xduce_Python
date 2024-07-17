@@ -11,13 +11,20 @@ https://chatgpt.com/share/52764cd5-34d1-41b4-9543-a607c65955c6
 https://dotnettutorials.net/lesson/creating-first-console-application-using-visual-studio/
 
 
-
-UPDATE pcc
-SET Technical_adequacy = 
-    CASE 
-        WHEN cco.TECH_ANNUAL_PREMIUM = 0 THEN 0
-        ELSE (cco.CHRG_ANNUAL_PREM / cco.TECH_ANNUAL_PREMIUM) * 100
-    END
-FROM pric.cybercoveragecommon pcc
+UPDATE ccc
+SET 
+    Technical_adequacy = 
+        CASE 
+            WHEN cco.TECH_ANNUAL_PREMIUM = 0 THEN 0
+            ELSE (cco.CHRG_ANNUAL_PREM / cco.TECH_ANNUAL_PREMIUM) * 100
+        END,
+    selected_coverage_opt = 
+        CASE 
+            WHEN ccc.selected_coverage_opt = '' THEN 'Scenario 1'
+            ELSE ccc.selected_coverage_opt
+        END
+FROM pric.cybercoveragecommon ccc
 INNER JOIN cybercoverageoption cco
-ON pcc.CoverageID = cco.CoverageID;
+ON ccc.CoverageID = cco.CoverageID
+WHERE cco.cybercoverage_id = 0;
+

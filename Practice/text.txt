@@ -10,7 +10,6 @@ https://chatgpt.com/share/52764cd5-34d1-41b4-9543-a607c65955c6
 
 https://dotnettutorials.net/lesson/creating-first-console-application-using-visual-studio/
 
-
 UPDATE ccc
 SET 
     Technical_adequacy = 
@@ -19,16 +18,12 @@ SET
             ELSE (cco.CHRG_ANNUAL_PREM / cco.TECH_ANNUAL_PREMIUM) * 100
         END,
     selected_coverage_opt = 
-        CASE 
-            WHEN ccc.selected_coverage_opt = '' THEN
-                CASE
-                    WHEN cco.option_type = 'Option 1' THEN 'Scenario 1'
-                    WHEN cco.option_type = 'Option 2' THEN 'Scenario 2'
-                    WHEN cco.option_type = 'Option 3' THEN 'Scenario 3'
-                    WHEN cco.option_type = 'Option 4' THEN 'Scenario 4'
-                    WHEN cco.option_type = 'Option 5' THEN 'Scenario 5'
-                    ELSE ccc.selected_coverage_opt
-                END
+        CASE
+            WHEN cco.option_type = 'Option 1' THEN 'Scenario 1'
+            WHEN cco.option_type = 'Option 2' THEN 'Scenario 2'
+            WHEN cco.option_type = 'Option 3' THEN 'Scenario 3'
+            WHEN cco.option_type = 'Option 4' THEN 'Scenario 4'
+            WHEN cco.option_type = 'Option 5' THEN 'Scenario 5'
             ELSE ccc.selected_coverage_opt
         END
 FROM pric.cybercoveragecommon ccc

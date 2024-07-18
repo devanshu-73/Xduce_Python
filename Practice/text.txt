@@ -20,11 +20,18 @@ SET
         END,
     selected_coverage_opt = 
         CASE 
-            WHEN ccc.selected_coverage_opt = '' THEN 'Scenario 1'
+            WHEN ccc.selected_coverage_opt = '' THEN
+                CASE
+                    WHEN cco.option_type = 'Option 1' THEN 'Scenario 1'
+                    WHEN cco.option_type = 'Option 2' THEN 'Scenario 2'
+                    WHEN cco.option_type = 'Option 3' THEN 'Scenario 3'
+                    WHEN cco.option_type = 'Option 4' THEN 'Scenario 4'
+                    WHEN cco.option_type = 'Option 5' THEN 'Scenario 5'
+                    ELSE ccc.selected_coverage_opt
+                END
             ELSE ccc.selected_coverage_opt
         END
 FROM pric.cybercoveragecommon ccc
 INNER JOIN cybercoverageoption cco
-ON ccc.CoverageID = cco.CoverageID
+ON ccc.CYBERCOVERAGECommon_ID = cco.CYBERCOVERAGECommon_ID
 WHERE cco.cybercoverage_id = 0;
-

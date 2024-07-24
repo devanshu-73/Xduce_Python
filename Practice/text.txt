@@ -4,14 +4,6 @@ https://chatgpt.com/share/52764cd5-34d1-41b4-9543-a607c65955c6
 
 =SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(D2, "-", ""), "(", ""), ")", ""), "/", ""), "_", " "), " ", " ")
 
-
-
-
-
-https://dotnettutorials.net/lesson/creating-first-console-application-using-visual-studio/
-
-
-
 --cybercoveragecommon
 
 UPDATE ccc

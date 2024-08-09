@@ -4,7 +4,11 @@ https://chatgpt.com/share/52764cd5-34d1-41b4-9543-a607c65955c6
 
 =SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(D2, "-", ""), "(", ""), ")", ""), "/", ""), "_", " "), " ", " ")
 
---cybercoveragecommon
+
+
+
+
+https://dotnettutorials.net/lesson/creating-first-console-application-using-visual-studio/
 
 UPDATE ccc
 SET 
@@ -23,6 +27,6 @@ SET
             ELSE ccc.selected_coverage_opt
         END
 FROM pric.cybercoveragecommon ccc
-INNER JOIN cybercoverageoption cco
+INNER JOIN pric.cybercoverageoption cco
 ON ccc.CYBERCOVERAGECommon_ID = cco.CYBERCOVERAGECommon_ID
 WHERE cco.cybercoverage_id = 0;

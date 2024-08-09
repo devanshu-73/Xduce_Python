@@ -1,0 +1,11 @@
+Hi Team,
+
+I hope you're all doing well.
+
+I have deployed the scripts for two dimension tables along with their corresponding stored procedure scripts. I need assistance with deploying these in the development branch.
+
+Could someone please help me with this?
+
+Thank you for your support!
+
+Best regards,

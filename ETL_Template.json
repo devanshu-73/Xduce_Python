@@ -1,0 +1,82 @@
+{
+    "ETL-Process": {
+        "D1-data-extract-process": {
+            "source_tables": [
+                "Source_Table_1",
+                "Source_Table_2"
+            ],
+            "extraction_logic": {
+                "filters": [
+                    {
+                        "column": "Column_Name",
+                        "condition": "Condition",
+                        "value": "Value"
+                    }
+                ],
+                "joins": [
+                    {
+                        "left_table": "Source_Table_1",
+                        "right_table": "Source_Table_2",
+                        "join_type": "INNER/LEFT/RIGHT/FULL",
+                        "on_condition": "Source_Table_1.Column = Source_Table_2.Column"
+                    }
+                ]
+            }
+        },
+        "D2-data-extract-process": {
+            "source_tables": [
+                "Source_Table_3",
+                "Source_Table_4"
+            ],
+            "extraction_logic": {
+                "filters": [
+                    {
+                        "column": "Column_Name",
+                        "condition": "Condition",
+                        "value": "Value"
+                    }
+                ],
+                "joins": [
+                    {
+                        "left_table": "Source_Table_3",
+                        "right_table": "Source_Table_4",
+                        "join_type": "INNER/LEFT/RIGHT/FULL",
+                        "on_condition": "Source_Table_3.Column = Source_Table_4.Column"
+                    }
+                ]
+            }
+        },
+        "D3-data-transform-process": {
+            "transformations": [
+                {
+                    "transformation_name": "Transformation_1",
+                    "logic": "TRANSFORM_LOGIC_1"
+                },
+                {
+                    "transformation_name": "Transformation_2",
+                    "logic": "TRANSFORM_LOGIC_2"
+                }
+            ]
+        },
+        "D4-data-standardization-process": {
+            "standardization_rules": [
+                {
+                    "column": "Column_Name",
+                    "rule": "Standardization_Rule_1"
+                },
+                {
+                    "column": "Column_Name",
+                    "rule": "Standardization_Rule_2"
+                }
+            ]
+        },
+        "D5-data-export-process": {
+            "target_table": "Target_Table_Name",
+            "export_logic": {
+                "mode": "INSERT/UPDATE/UPSERT",
+                "batch_size": 1000,
+                "commit_interval": 100
+            }
+        }
+    }
+}

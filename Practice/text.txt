@@ -30,3 +30,13 @@ FROM pric.cybercoveragecommon ccc
 INNER JOIN pric.cybercoverageoption cco
 ON ccc.CYBERCOVERAGECommon_ID = cco.CYBERCOVERAGECommon_ID
 WHERE cco.cybercoverage_id = 0;
+
+
+
+
+
+
+
+
+
+

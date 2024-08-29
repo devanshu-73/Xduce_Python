@@ -1,0 +1,104 @@
+Configuration Breakdown
+1. D0-common-conf
+Use Case: Data-Vault
+
+Process Name: clean_to_atomic
+
+Logging Level: DEBUG
+
+Multi-Load: true
+
+Multi-Load List: ["SAT_PREM_CMN_DATA"]
+
+This is the common configuration setting used across multiple stages. The logging level is set to DEBUG for detailed logging, and the process is configured to handle multiple loads, specifically for SAT_PREM_CMN_DATA.
+
+2. D6-data-extract-process
+This stage extracts data from a list of source tables and applies specific transformations and filters.
+
+Source Tables: ["SAT_PREM", "LNK_PREM_TRAN", "SAT_PLCY_DTL", "SAT_CVRG_DTL", "SAT_LOB_DTL"]
+a. SAT_PREM
+
+Table Name: ADV_DB.SAT_PREM
+Columns: ["QBE_HASH_PREM_TRAN_ID", "REF_ID", "SRC_EFF_DT", "BTCH_DT", "TRAN_EFF_DT", "ACCTG_YR_MO_TXT", "TRAN_CD"]
+Filter: Source Filter with value "109" applied to pull records with a specific source-filter.
+Transformations:
+Derived Keys: Custom expressions are used to create derived keys such as ACCTG_YR_MO_TXT_MONTH, ACCTG_YR_MO_TXT_YEAR, ACCTG_PRD, etc.
+b. LNK_PREM_TRAN
+
+Table Name: ADV_DB.LNK_PREM_TRAN
+Columns: ["QBE_HASH_PREM_TRAN_ID", "QBE_HASH_PLCY_ID", "QBE_HASH_CVRG_ID", "QBE_HASH_LOB_ID", "REF_ID", "ST_PRVNC_CD", "ST_CD"]
+Aliases: Custom aliases are applied to the columns.
+Join: An inner join is performed based on QBE_HASH_PREM_TRAN_ID.
+c. SAT_PLCY_DTL
+
+Table Name: ADV_DB.SAT_PLCY_DTL
+Columns: ["QBE_HASH_PLCY_ID", "PROD_CD", "MKT_SGMT_CD", "PLCY_TP_CD", "PGM_CD", "EFF_DT", "PRIM_RISK_ST_CD", "NEW_RNWL_FLG", "SRC_PLCY_NBR"]
+Filter: PROD_CD is filtered to match "AC".
+Transformations: Derived keys are created for fields like EFF_DT, UW_YR, and NEW_RNWL_FLG.
+Join: An inner join is performed based on QBE_HASH_PLCY_ID.
+d. SAT_CVRG_DTL
+
+Table Name: ADV_DB.SAT_CVRG_DTL
+Columns: ["QBE_HASH_CVRG_ID", "CVRG_CD", "ASLOB_CD", "SUBLINE_CD", "CVRG_PART_CD"]
+Transformations: Custom expressions are used to derive keys like ASLOB_CD_DRV and SUBLINE_CD_DRV.
+Join: An inner join is performed based on QBE_HASH_CVRG_ID.
+e. SAT_LOB_DTL
+
+Table Name: ADV_DB.SAT_LOB_DTL
+Columns: ["QBE_HASH_LOB_ID", "LOB_CD"]
+Join: An inner join is performed based on QBE_HASH_LOB_ID.
+3. D7-data-extract-process
+This stage extracts and combines data from another set of tables.
+
+Source Tables: ["LNK_PLCY_PRTY_ROLE", "SAT_WRTG_CO", "SAT_INSD"]
+a. LNK_PLCY_PRTY_ROLE
+
+Table Name: ADV_DB.LNK_PLCY_PRTY_ROLE
+Columns: ["QBE_HASH_PLCY_PRTY_ROLE_ID", "QBE_HASH_PLCY_ID", "PRTY_ROLE_TP_CD"]
+Filter: Filters the column PRTY_ROLE_TP_CD to match "Insurer".
+Aliases: Custom aliases are applied.
+b. SAT_WRTG_CO
+
+Table Name: ADV_DB.SAT_WRTG_CO
+Columns: ["QBE_HASH_PLCY_PRTY_ROLE_ID", "CO_NBR"]
+Join: A left join is performed based on QBE_HASH_PLCY_PRTY_ROLE_ID.
+c. SAT_INSD
+
+Table Name: ADV_DB.SAT_INSD
+
+Columns: ["QBE_HASH_PLCY_PRTY_ROLE_ID", "SIC_CD", "OWNRSP_TP_CD"]
+
+Transformation: Applies upper case transformation to OWNRSP_TP_CD.
+
+Join: A left join is performed based on QBE_HASH_PLCY_PRTY_ROLE_ID.
+
+Master Combine: An inner join is performed to combine all data based on the keys QBE_HASH_PLCY_ID_LPPR and QBE_HASH_PLCY_ID_LPT.
+
+4. D8-data-extract-process
+This stage pulls and joins data from policy and coverage-related tables.
+
+Source Tables: ["LNK_PLCY_CVRG", "SAT_PLCY_CVRG_DTL"]
+a. LNK_PLCY_CVRG
+
+Table Name: ADV_DB.LNK_PLCY_CVRG
+Columns: ["QBE_HASH_PLCY_CVRG_ID", "QBE_HASH_PLCY_ID", "QBE_HASH_CVRG_ID", "QBE_HASH_LOB_ID", "REF_ID"]
+Aliases: Custom aliases are applied.
+b. SAT_PLCY_CVRG_DTL
+
+Table Name: ADV_DB.SAT_PLCY_CVRG_DTL
+
+Columns: ["QBE_HASH_PLCY_CVRG_ID", "CLM_MADE_FLG"]
+
+Join: An inner join is performed based on QBE_HASH_PLCY_CVRG_ID.
+
+Master Combine: An inner join is performed to combine all data based on the keys QBE_HASH_PLCY_ID_LPC, QBE_HASH_CVRG_ID_LPC, QBE_HASH_LOB_ID_LPC, and REF_ID_LPC.
+
+5. D9-data-transform-standardization-process
+This stage applies various transformations and standardizations to the extracted data.
+
+Transformations:
+T1: Derived Keys
+ST_CD_PRV: Based on conditions, derives ST_CD_PRV from ST_CD or ST_PRVNC_CD.
+ST_CD_STC4: Further derives ST_CD_STC4 from ST_CD_PRV or PRIM_RISK_ST_CD.
+T2: Reference Data Lookup
+Performs a lookup on ADV_DB.XFRMTN using a recursive look-up UDF to match columns like PROD_CD, LOB_CD, ASLOB_CD_DRV, etc., with reference tables for standardization.

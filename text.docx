@@ -102,3 +102,52 @@ ST_CD_PRV: Based on conditions, derives ST_CD_PRV from ST_CD or ST_PRVNC_CD.
 ST_CD_STC4: Further derives ST_CD_STC4 from ST_CD_PRV or PRIM_RISK_ST_CD.
 T2: Reference Data Lookup
 Performs a lookup on ADV_DB.XFRMTN using a recursive look-up UDF to match columns like PROD_CD, LOB_CD, ASLOB_CD_DRV, etc., with reference tables for standardization.
+
+E1-export-atomic-process
+Type: Export Atomic Process
+
+Mode of Write: Overwrite
+
+SCD2 Version: Version 2
+
+Read Type: Record Source Filtered Active
+
+Source Filter: 109
+
+CDC Flag: False
+
+SCD2 Flag: True
+
+Process Overview:
+This process is responsible for exporting data from the transformed and standardized datasets into the target data store. It utilizes Slowly Changing Dimension (SCD) Type 2 logic to handle historical data and updates.
+
+Key Features:
+Mode of Write: Data is written to the target table by overwriting existing records.
+SCD2 Version: Uses SCD2 logic to manage historical changes in data.
+Read Type: Extracts data from the source based on active records filtered by the source filter.
+SCD2 Configuration:
+Input Table Keys:
+
+QBE_HASH_PREM_TRAN_ID
+Target Table Keys:
+
+QBE_HASH_PREM_TRAN_ID
+Keys to Exclude from Update Check:
+
+REF_ID
+SRC_EFF_DT
+LD_DT
+Keys to Identify Unique Records:
+
+Key List:
+QBE_HASH_PREM_TRAN_ID
+REF_ID
+LD_DT
+Custom Aggregate Lag Expression:
+Expression for calculating aggregate lag based on unique keys.
+Purpose:
+To ensure that the target data store is updated with the latest data, reflecting any historical changes and maintaining the integrity of the Slowly Changing Dimension.
+
+Additional Notes:
+Ensure the scd2-flag is set to true to apply SCD Type 2 logic.
+The cdc-flag is false, meaning Change Data Capture is not enabled for this process.

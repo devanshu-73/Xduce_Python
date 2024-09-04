@@ -1,0 +1,67 @@
+1. usp_load_dimmgmtun
+Purpose: Loads data from stg.DIM_MGMT_UN_stg into DIM.DIM_MGMT_UN, handling both inserts and updates.
+Transaction Handling: A transaction is initiated to ensure data integrity. The transaction commits only if all staging records are processed; otherwise, it rolls back and raises an error.
+Logic:
+Counts records in the staging table.
+Insert: Inserts new records marked as Load_Action = 'Insert' into the target table and counts them.
+Update: Updates existing records in the target table for those marked as Load_Action = 'Update'.
+Verifies the total processed records match the staging count.
+Error Handling: Captures any errors, rolls back the transaction if needed, and raises the error.
+
+Config : dim_mgmt_un_dataMart.json
+D0-common-conf:
+
+Sets up basic configuration with a focus on the DataMart process named atomic_to_datamart.
+Logging level is set to DEBUG for detailed tracking.
+D1-data-extract-process:
+
+Extracts data from the ADV_DB.SAT_PREM_CMN_DATA table.
+Filters out rows where MGMT_UN_Code is NULL or empty.
+Selects columns REC_SRC_NM, MGMT_UN_CD, and BTCH_DT, with aliases applied.
+D2-data-transform-process:
+
+Handles data transformation by removing duplicates based on the MGMT_UN_Code column.
+D3-data-transform-standardization-process:
+
+Performs a lookup to standardize the MGMT_UN_Description using an external reference table ref_db.ebx_repl_managementunit_vw.
+Maps MGMT_UN_Code to managementUnitCode and retrieves the shortDescription.
+D4-export-datamart-process:
+
+Exports processed data to stg.DIM_MGMT_UN_stg.
+Ensures data consistency with Slowly Changing Dimension (SCD) Type 1, focusing on MGMT_UN_Code as the key.
+Appends the data to the target table and excludes certain columns from update checks.
+
+
+
+2. usp_load_dimclassofbusiness
+Purpose: Loads data from stg.DIM_ClassOfBusiness_stg into DIM.DIM_ClassOfBusiness, managing inserts and updates.
+Transaction Handling: Ensures all changes are atomic by using a transaction. The transaction commits only if the record count matches between staging and target; otherwise, it rolls back and raises an error.
+Logic:
+Counts records in the staging table.
+Insert: Inserts new records where Load_Action = 'Insert' and tracks the count.
+Update: Updates existing records based on Load_Action = 'Update'.
+Confirms the processed record count matches the staging table count.
+Error Handling: Captures and handles any errors by rolling back the transaction and raising the error.
+
+Config : dim_classofbusiness_dataMart.json
+
+D0-common-conf:
+
+Similar to the first file, setting up the DataMart process named atomic_to_datamart with DEBUG logging.
+D1-data-extract-process:
+
+Extracts data from the ADV_DB.SAT_PREM_CMN_DATA table, focusing on ClassOfBusiness_Code.
+Filters out rows where ClassOfBusiness_Code is NULL or empty.
+Selects columns REC_SRC_NM, CLS_OF_BUS_CD, and BTCH_DT, with appropriate aliases.
+D2-data-transform-process:
+
+Removes duplicate records based on ClassOfBusiness_Code.
+D3-data-transform-standardization-process:
+
+Standardizes the ClassOfBusiness_Description by looking up a reference table ref_db.ebx_repl_classofbusiness_vw.
+Maps ClassOfBusiness_Code to classOfBusinessCode and retrieves the shortDescription.
+D4-export-datamart-process:
+
+Exports the processed data to stg.DIM_ClassOfBusiness_stg.
+Utilizes SCD Type 1 to maintain data integrity, focusing on ClassOfBusiness_Code.
+Appends the data to the target table, with specific columns excluded from update checks.

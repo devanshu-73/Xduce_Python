@@ -151,3 +151,42 @@ To ensure that the target data store is updated with the latest data, reflecting
 Additional Notes:
 Ensure the scd2-flag is set to true to apply SCD Type 2 logic.
 The cdc-flag is false, meaning Change Data Capture is not enabled for this process.
+
+
+
+
+
+
+
+
+
+
+-------------------------------------------------
+
+Main Query Explanation
+The query retrieves various columns from two datasets (abc and xyz), and performs several operations to reconcile or compare these datasets. The datasets abc and xyz are likely sourced from different tables, possibly representing actual and forecasted data.
+
+select POLICYNUMBER,Policy_Ft,subCell,WP_ADV ,Status:
+
+The outer SELECT statement specifies the columns to be returned in the final result.
+select coalesce(abc.POLICYNUMBER, xyz.PolicyNumber) as POLICYNUMBER:
+
+COALESCE is used to combine columns from abc and xyz, taking the first non-null value. This is useful when comparing two datasets that may have missing or null values in different rows.
+concat_ws("_", ... ) as Policy_Plat:
+Combines policy numbers and effective dates into a concatenated string, which serves as a unique identifier.
+Calculating the Diff Column:
+
+The difference between WP_ADV (from xyz) and WP (from abc) is calculated. This might indicate a variance between actual and expected premiums.
+Conditional Logic (CASE Statements):
+
+The CASE statement creates a Status column that indicates whether REPORT_GROUP2 from abc matches Subcell from xyz. This helps in identifying records where certain conditions are met (e.g., matching groupings).
+3. Subqueries (abc and xyz)
+abc Subquery:
+
+Aggregates data from a table (dsi_reg.adv_db_recon.premiums) for certain GainLineOfBusiness and datasource values. It groups data by concatenated policy numbers, effective dates, and report groups, and sums the WP (Written Premium) values.
+The data is filtered by accountingPeriod, focusing on the years from 2017 to 2023.
+xyz Subquery:
+
+Similar to abc, but it pulls data from a different table (dsi_reg.adv_db_recon.ft_premium_detail) where SourceSystemCode is '92'. It sums WP_ADV (likely an advanced or forecasted premium) and groups by policy numbers, effective dates, and subcells.
+4. JOIN Operation
+A FULL OUTER JOIN is performed between abc and xyz on matching policy numbers, effective dates, and groupings. This ensures that all records from both datasets are included, even if there's no match in the other dataset.
